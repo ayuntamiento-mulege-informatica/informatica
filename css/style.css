@@ -1,0 +1,356 @@
+@charset "UTF-8";
+/**
+* Hoja de estilos para el proyecto de Sistema de registro de títulos de propiedad.
+*/
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Bold.ttf');
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('../img/bg4.png') no-repeat fixed center / cover;
+}
+
+/** ENCABEZADO PRINCIPAL DE LA PÁGINA
+* Estilos para el encabezado principal de la página.
+*/
+header {
+  display: flex;
+  overflow: hidden;
+  height: 15vh;
+  padding: 0;
+  text-align: center;
+  background-color: rgba(255, 255, 255, .8);
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  text-align: center;
+}
+
+header img {
+  max-width: 400px;
+  max-height: 100%;
+  margin: 0 auto;
+}
+
+/** ENCABEZADOS PARA TODA LA PÁGINA.
+* Estos estilos se aplicarán a todos los encabezados dentro de cualquier estilo,
+* salvo que se utilicen otros parámetros que cambien su comportamiento.
+*/
+h1,
+h2,
+h3 {
+  font-weight: bold;
+  text-align: center;
+  color: #f38065;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin: 1em 0;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+/** CAMPOS EN FORMULARIOS
+* Estos son estilos genéricos para no tener que crear estilos nuevos, solo hay
+* que aplicar la etiqueta correspondiente.
+*/
+/* Estilos para campos en formularios. */
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[type='number'],
+input[type='password'],
+input[type='file'],
+textarea,
+select {
+  font-size: 1rem;
+  width: 100%;
+  margin-bottom: .5em;
+  padding: .5em;
+  color: #567abc;
+  border: 1px solid #1f53c4;
+  border-radius: 4px;
+  background: white;
+}
+
+/* Estilos para botones en formularios y botones simples. */
+input[type='submit'],
+input[type='reset'],
+button,
+.enlace-boton {
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 50px;
+  margin: .5em auto;
+  padding: 1em;
+  text-align: center;
+  color: white;
+  border: none;
+  background: #1f53c4;
+}
+
+input[type='submit']:hover,
+input[type='reset']:hover,
+button:hover,
+.enlace-boton:hover {
+  text-decoration: none;
+  color: #f5b11a;
+}
+
+.enlace-boton-bloqueado {
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 50px;
+  margin: .5em auto;
+  padding: 1em;
+  text-align: center;
+  color: white;
+  border: none;
+  background: #f38065;
+}
+
+.enlace-boton-atendido {
+  font-size: 1rem;
+  font-weight: bold;
+  display: inline-block;
+  min-width: 50px;
+  margin: .5em auto;
+  padding: 1em;
+  text-align: center;
+  color: white;
+  border: none;
+  background: #48b64c;
+}
+
+input[readonly],
+textarea[readonly],
+select[readonly] {
+  color: #1f53c4 !important;
+  background-color: #f38065 !important;
+}
+
+button a {
+  font-weight: bold;
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+button a:hover {
+  text-decoration: none;
+  color: #f5b11a;
+}
+
+/* ESTILOS PARA TABLAS */
+table,
+th,
+td {
+  border: 1px solid #226ab3;
+  background-color: rgba(255, 255, 255, 1);
+}
+
+table {
+  margin: 0;
+}
+
+th,
+td {
+  padding: .5em;
+}
+
+th {
+  text-align: center;
+}
+
+main {
+  z-index: 0;
+  overflow: hidden;
+  min-height: 70vh;
+}
+
+/** ESTILOS PARA PIE DE PÁGINA.
+* Estos estilos siempre se aplicaran a la etiqueta <footer> no importa dónde se aplique.
+*
+* De preferencia hay que dejarla en el fondo de la página.
+*/
+footer {
+  width: 100%;
+  min-height: 15vh;
+  padding: 2em;
+  border-top: 1px solid #f5b11a;
+  background-color: rgba(255, 255, 255, .5);
+}
+
+/** ESTILOS PARA CONTENEDORES
+* Estos estilos pueden ser aplicados a cualquier bloque de contenido, como
+* formularios o divisiones.
+*/
+.contenedor {
+  overflow: hidden;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0;
+  border: 1px solid #567abc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+
+.titulo-contenedor {
+  line-height: 1.5em;
+  width: 100%;
+  min-height: 1.5em;
+  padding: .5em;
+  background: #d3e6ef;
+}
+
+.contenido-contenedor {
+  width: 100%;
+  padding: .5em;
+  background-color: #d3e6ef;
+}
+
+#resumen-general {
+  width: 4000px;
+}
+
+#resumen-general td {
+  width: auto;
+}
+
+.centrar-contenedor {
+  display: flex;
+  min-height: 70vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.centrar-botones {
+  text-align: center;
+}
+
+/* ESTILOS PARA ELEMENTOS DENTRO DEL PIE DE LA PÁGINA. */
+.footer-copyright {
+  text-align: center;
+}
+
+.footer-copyright p {
+  font-size: 1rem;
+  line-height: 1.5em;
+}
+
+/* ESTILOS PARA MENÚ DE NAVEGACIÓN */
+.menu {
+  position: sticky;
+  z-index: 9999;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #48b64c;
+  background-color: rgba(255, 255, 255, .8);
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.menu ul li {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+#menu-izquierdo {
+  text-align: left;
+}
+
+#menu-derecho {
+  text-align: right;
+}
+
+/* PAGINADOR */
+.paginador {
+  padding: 1em;
+  list-style: none;
+  text-align: center;
+}
+
+.paginador li {
+  line-height: 40px;
+  display: inline-block;
+  min-width: 40px;
+  height: 40px;
+  margin: 0 .5em;
+  text-align: center;
+  color: white;
+  background-color: #1f53c4;
+}
+
+.paginador .inactive {
+  color: black;
+  background: none;
+}
+
+.paginador .active {
+  background-color: #f38065;
+}
+
+.paginador li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+}
+
+.paginador li a:hover {
+  color: #f5b11a;
+}
+
+/* Ajusta imágenes en formulario */
+.upload-thumb {
+  width: 100%;
+  margin: 0 auto;
+  padding: .5em;
+  border: 1px solid #1f53c4;
+  border-radius: 4px;
+  background-color: white;
+}

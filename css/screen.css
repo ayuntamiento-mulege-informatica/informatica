@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Bold.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: url('/img/bg4.png') no-repeat fixed center / cover;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  padding: .25in;
+}
+
+p {
+  font-size: .9rem;
+}
+
+input[type='text'] {
+  border-top: none;
+  border-right: none;
+  border-bottom: 1px solid;
+  border-left: none;
+  background: none;
+}
+
+.pagina {
+  width: 21.59cm;
+  height: 35.56cm;
+  margin: 0 auto;
+  padding: 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+  background-color: #fff;
+}
+
+.hoja-1-fondo,
+.hoja-2-fondo,
+.hoja-5-fondo {
+  z-index: 0;
+  width: 21.59cm;
+  height: 35.56cm;
+  margin: 0;
+  padding: 10mm;
+  margin: auto;
+}
+
+.hoja-1-fondo img,
+.hoja-2-fondo img,
+.hoja-3-fondo img,
+.hoja-4-fondo img,
+.hoja-5-fondo img {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.hoja-1-folio {
+  position: relative;
+  z-index: 10;
+  top: -3.8cm;
+  right: -13.8cm;
+  width: 4.7cm;
+  text-align: left;
+}
+
+.hoja-1-contenido,
+.hoja-2-contenido,
+.hoja-3-contenido,
+.hoja-4-contenido,
+.hoja-5-contenido {
+  position: absolute;
+  z-index: 10;
+  top: 6mm;
+  width: 21.59cm;
+  height: 35.56cm;
+  padding: 15mm 17mm;
+  text-align: justify;
+}
+
+.hoja-1-contenido {
+  padding-top: 8.5cm !important;
+}
+
+.hoja-4-contenido {
+  top: 5in;
+  height: 4in;
+}
+
+.hoja-1-contenido ol {
+  margin: 0 0 0 1em;
+  padding: 0;
+}
+
+.hoja-1-contenido pre {
+  font-size: .75rem;
+}
+
+.pie-de-pagina {
+  text-align: right;
+  z-index: 10;
+  position: absolute;
+  bottom: 2mm;
+  right: 15mm;
+  line-height: 0;
+  height: 8mm;
+  width: 18.59cm;
+}
+
+.pie-de-pagina .izquierda {
+  float: left;
+}
+
+.pie-de-pagina .derecha {
+  float: right;
+}
+
+.pie-de-pagina-1 {
+  text-align: right;
+  z-index: 10;
+  position: absolute;
+  bottom: 2mm;
+  right: 15mm;
+  line-height: 0;
+  height: 8mm;
+}
+
+.colindancias {
+  height: 8cm;
+  column-count: 2;
+  column-width: 50%;
+  column-fill: auto;
+}
+
+.cubierta {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  opacity: 0;
+  background: #fff;
+}
