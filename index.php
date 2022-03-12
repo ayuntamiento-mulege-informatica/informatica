@@ -33,111 +33,42 @@ else { $parametro_6 = null; }
 /* URI DE LA SECCIÓN. */
 $seccion = $_SERVER['REQUEST_URI'];
 
-switch ($area) {
-  case 'Sindicatura':
-    switch ($seccion) {
-      case '/':
-        include_once 'inicio_sindicatura.php';
-    		break;
-
-      case '/registrar_titulo':
-      case '/registrar_titulo/admin_anterior':
-        include_once 'registrar_titulo.php';
-    		break;
-
-      case '/modificar_titulo/'.$parametro_2:
-      case '/modificar_titulo/'.$parametro_2.'/'.$parametro_3:
-        include_once 'modificar_titulo.php';
-    		break;
-
-      case '/crear_leyenda':
-        include_once 'crear_leyenda.php';
-    		break;
-
-      case '/lista_leyendas':
-        include_once 'lista_leyendas.php';
-        break;
-
-      case '/consultar_titulo':
-        include_once 'consultar_titulo.php';
-    		break;
-
-      case '/resumen_general':
-      case '/resumen_general/'.$parametro_2.'/'.$parametro_3:
-        include_once 'resumen_general.php';
-    		break;
-
-      case '/lista_funcionarios':
-        include_once 'lista_funcionarios.php';
-    		break;
-
-      case '/levantar_ticket':
-        include_once 'levantar_ticket.php';
-    		break;
-
-      case '/logout':
-        include_once 'logout.php';
-        break;
-
-    	default:
-        include_once '404.php';
-    		break;
-    }
+switch ($seccion) {
+  case '/':
+    include_once 'inicio_informatica.php';
     break;
 
-  case 'Informática':
-		switch ($seccion) {
-      case '/':
-        include_once 'inicio_informatica.php';
-				break;
-			case '/registrar_usuario':
-				include_once 'registrar_usuario.php';
-				break;
+  case '/registrar_usuario':
+    include_once 'registrar_usuario.php';
+    break;
 
-      case '/modificar_usuario/'.$parametro_2:
-        include_once 'modificar_usuario.php';
-        break;
+  case '/modificar_usuario/'.$parametro_2:
+    include_once 'modificar_usuario.php';
+    break;
 
-      case '/lista_usuarios':
-        include_once 'lista_usuarios.php';
-        break;
+  case '/lista_usuarios':
+    include_once 'lista_usuarios.php';
+    break;
 
-      case '/registrar_leyenda':
-				include_once 'crear_leyenda.php';
-				break;
+  case '/actualizar_administracion':
+    include_once 'actualizar_administracion.php';
+    break;
 
-      case '/lista_leyendas':
-				include_once 'lista_leyendas.php';
-				break;
+  case '/registrar_administracion':
+    include_once 'registrar_administracion.php';
+    break;
 
-      case '/actualizar_administracion':
-				include_once 'actualizar_administracion.php';
-				break;
+  case '/revisar_tickets':
+    include_once 'revisar_tickets.php';
+    break;
 
-      case '/registrar_administracion':
-				include_once 'registrar_administracion.php';
-				break;
-
-      case '/desbloquear_titulo':
-				include_once 'desbloquear_titulo.php';
-				break;
-
-      case '/revisar_tickets':
-				include_once 'revisar_tickets.php';
-				break;
-
-      case '/logout':
-        include_once 'logout.php';
-        break;
-
-			default:
-        include_once '404.php';
-				break;
-		}
+  case '/logout':
+    include_once 'logout.php';
     break;
 
   default:
-    include_once 'login.php';
+    include_once '404.php';
     break;
-}
-?>
+  }
+  break;
+  ?>

@@ -6,7 +6,7 @@
 define('BD_HOST','localhost');
 define('BD_USR','root');
 define('BD_PASS','0st3yj49xt');
-define('BD_NAME','sindicatura');
+define('BD_NAME','informatica');
 
 $connect = new mysqli(BD_HOST, BD_USR, BD_PASS, BD_NAME);
 if(!$connect){
