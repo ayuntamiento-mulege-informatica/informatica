@@ -3,9 +3,6 @@ require 'connect.php';
 
 session_start();
 
-if (!isset($_SESSION['area'])) { $area = null; }
-else { $area = $_SESSION['area']; }
-
 // Separa la URI en un arreglo utilizando las diagonales (/) como separador.
 $aux = substr($_SERVER['REQUEST_URI'], strlen('/'));
 if( substr($aux, -1) == '/'){ $aux = substr($aux, 0, -1); }
@@ -30,10 +27,7 @@ else { $parametro_5 = null; }
 if (isset($url_array[5])) { $parametro_6 = $url_array[5]; }
 else { $parametro_6 = null; }
 
-/* URI DE LA SECCIÓN. */
-$seccion = $_SERVER['REQUEST_URI'];
-
-switch ($seccion) {
+switch ($_SERVER['REQUEST_URI']) {
   case '/':
     include_once 'inicio_informatica.php';
     break;
@@ -69,6 +63,5 @@ switch ($seccion) {
   default:
     include_once '404.php';
     break;
-  }
-  break;
-  ?>
+}
+?>

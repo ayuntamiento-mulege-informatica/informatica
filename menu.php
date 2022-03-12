@@ -3,15 +3,12 @@
     <div class="row">
       <div class="col-9">
         <ul id="menu-izquierdo">
-          <?php if ($seccion != '/'): ?>
+          <?php if ($_SERVER['REQUEST_URI'] != '/'): ?>
             <li><a class="enlace-boton" href="/"><span class="fas fa-home"></span> Inicio</a></li>
           <?php endif; ?>
 
-          <?php if ($area == 'Informática'): ?>
-            <?php if ($_SERVER['REQUEST_URI'] == '/modificar_usuario/'.$parametro_2): ?>
-              <li> <a class="enlace-boton" href="/lista_usuarios">Lista de usuarios</a> </li>
-            <?php endif; ?>
-          <?php elseif ($area == 'Sindicatura'): ?>
+          <?php if ($_SERVER['REQUEST_URI'] == '/modificar_usuario/'.$parametro_2): ?>
+            <li> <a class="enlace-boton" href="/lista_usuarios">Lista de usuarios</a> </li>
           <?php endif; ?>
         </ul>
       </div>
