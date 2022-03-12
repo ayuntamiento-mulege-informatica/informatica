@@ -3,17 +3,25 @@
     <div class="row">
       <div class="col-9">
         <ul id="menu-izquierdo">
-          <?php if ($_SERVER['REQUEST_URI'] != '/'): ?>
-            <li><a class="enlace-boton" href="/"><span class="fas fa-home"></span> Inicio</a></li>
-          <?php endif; ?>
+          <?php
+          if ($seccion != '/'){ echo '<li><a class="enlace-boton" href="/"><span class="fas fa-home"></span> Inicio</a></li>'; }
 
-          <?php if ($_SERVER['REQUEST_URI'] == '/modificar_usuario/'.$parametro_2): ?>
+          switch ($seccion) {
+            case '/nuevo_reporte_mantenimiento':
+            case '/modificar_reporte_mantenimiento':
+            case '/lista_reportes_mantenimiento':
+              echo '<li><a class="enlace-boton" href="/bitacora_mantenimiento">Bitácora de mantenimiento</a></li>';
+              break;
+          }
+          ?>
+
+          <?php if ($seccion == '/modificar_usuario/'.$parametro_2): ?>
             <li> <a class="enlace-boton" href="/lista_usuarios">Lista de usuarios</a> </li>
           <?php endif; ?>
         </ul>
       </div>
 
-      <?php if (isset($_SESSION['usuario'])): ?>
+      <?php if (isset($area)): ?>
         <div class="col-3">
           <ul id="menu-derecho">
             <li><a class="enlace-boton" href="/logout">Cerrar sesión</a></li>
