@@ -19,8 +19,14 @@ include_once 'menu.php';
                 <div class="centrar-botones">
                   <a class="enlace-boton" href="/bitacora_mantenimiento">Bitácora de matenimiento</a>
                   <a class="enlace-boton" href="/entrega_toner_tinta">Entrega de toner y tinta</a>
-                  <a class="enlace-boton" href="/inventario_toner_tinta">Inventario de toner y tinta</a>
+                </div>
+              </div>
+
+              <div class="col-4">
+                <h3>Inventarios</h3>
+                <div class="centrar-botones">
                   <a class="enlace-boton" href="/inventario_impresoras">Inventario de impresoras</a>
+                  <a class="enlace-boton" href="/inventario_toner_tinta">Inventario de toner y tinta</a>
                   <a class="enlace-boton" href="/inventario_computadoras">Inventario de computadoras</a>
                 </div>
               </div>

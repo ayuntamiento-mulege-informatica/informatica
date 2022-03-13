@@ -8,9 +8,13 @@
 
           switch ($seccion) {
             case '/nuevo_reporte_mantenimiento':
-            case '/modificar_reporte_mantenimiento':
             case '/lista_reportes_mantenimiento':
               echo '<li><a class="enlace-boton" href="/bitacora_mantenimiento">Bitácora de mantenimiento</a></li>';
+              break;
+
+            case '/editar_reporte_mantenimiento/'.$parametro_2:
+              echo '<li><a class="enlace-boton" href="/bitacora_mantenimiento">Bitácora de mantenimiento</a></li>';
+              echo '<li><a class="enlace-boton" href="/lista_reportes_mantenimiento">Lista de reportes</a></li>';
               break;
           }
           ?>

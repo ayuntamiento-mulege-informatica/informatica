@@ -118,6 +118,8 @@ button,
   font-weight: bold;
   display: inline-block;
   min-width: 50px;
+  max-width: 500px;
+  width: 100%;
   margin: .5em auto;
   padding: 1em;
   text-align: center;
