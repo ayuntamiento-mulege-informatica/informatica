@@ -55,6 +55,37 @@ class reportes_mantenimiento {
     else { return null; }
   }
 
+  // Función para obtener lista de reportes por búsqueda.
+  function listaReportesMantenimientoBuscar($connect, $reporte, $fecha_ingreso, $area_trabajo, $unidad, $pag, $noReg) {
+    if ($reporte == null) {
+      $sql = "SELECT * FROM bitacora_mantenimiento WHERE fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%' ORDER BY reporte ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+    else {
+      $sql = "SELECT * FROM bitacora_mantenimiento WHERE reporte LIKE $reporte AND fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%' ORDER BY reporte ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $reportes[] = array(
+        'reporte' => $row['reporte'],
+        'fecha_ingreso' => $row['fecha_ingreso'],
+        'fecha_salida' => $row['fecha_salida'],
+        'area_trabajo' => $row['area_trabajo'],
+        'unidad' => $row['unidad'],
+        'marca' => $row['marca'],
+        'modelo' => $row['modelo'],
+        'solicitante' => $row['solicitante'],
+        'actividad' => $row['actividad'],
+        'observaciones' => $row['observaciones'],
+        'conclusiones' => $row['conclusiones'],
+        'responsable' => $row['responsable']
+      );
+    }
+
+    if (isset($reportes)) { return $reportes; }
+    else { return null; }
+  }
+
   // Función para obtener información de un reporte.
   function infoReporte($connect, $reporte) {
     $sql = "SELECT * FROM bitacora_mantenimiento WHERE reporte = $reporte";

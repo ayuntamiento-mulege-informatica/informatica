@@ -22,16 +22,16 @@ include_once 'menu.php';
               <div class="col-6">
                 <h3>Buscar reporte</h3>
 
-                <form class="container-fluid" action="/buscar_reportes" method="post">
+                <form class="container-fluid" action="/lista_reportes_mantenimiento" method="post">
                   <div class="row justify-content-center">
                     <div class="col-6">
                       <label for="">No. de reporte:</label><br>
-                      <input type="text" name="no_reporte">
+                      <input type="text" name="reporte">
                     </div>
 
                     <div class="col-6">
                       <label for="">Fecha del entrada:</label><br>
-                      <input type="date" name="fecha_reporte">
+                      <input type="date" name="fecha_ingreso">
                     </div>
 
                     <div class="col-12">
@@ -41,7 +41,7 @@ include_once 'menu.php';
 
                     <div class="col-12">
                       <label for="">Área:</label><br>
-                      <input type="text" name="area">
+                      <input type="text" name="area_trabajo">
                     </div>
 
                     <div class="">
