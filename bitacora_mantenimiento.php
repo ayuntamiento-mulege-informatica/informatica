@@ -1,4 +1,11 @@
 <?php
+require_once 'lib/class_reportes_mantenimiento.php';
+
+$reportes_mantenimiento = new reportes_mantenimiento;
+
+$lista_unidades = $reportes_mantenimiento -> listaEquipos($connect);
+$lista_areas_trabajo = $reportes_mantenimiento -> listaAreasTrabajo($connect);
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>
@@ -36,12 +43,27 @@ include_once 'menu.php';
 
                     <div class="col-12">
                       <label for="">Unidad:</label><br>
-                      <input type="text" name="unidad">
+                      <select name="unidad">
+                        <option value=""></option>
+                        <?php if (isset($lista_unidades)): ?>
+                          <?php foreach ($lista_unidades as $unidad): ?>
+                            <option value="<?php echo $unidad['unidad']; ?>"><?php echo $unidad['unidad']; ?></option>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </select>
                     </div>
 
                     <div class="col-12">
                       <label for="">Área:</label><br>
-                      <input type="text" name="area_trabajo">
+                      <!-- <input type="text" name="area_trabajo"> -->
+                      <select name="area_trabajo">
+                        <option value=""></option>
+                        <?php if (isset($lista_areas_trabajo)): ?>
+                          <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
+                            <option value="<?php echo $area_trabajo['area_trabajo']; ?>"><?php echo $area_trabajo['area_trabajo']; ?></option>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </select>
                     </div>
 
                     <div class="">

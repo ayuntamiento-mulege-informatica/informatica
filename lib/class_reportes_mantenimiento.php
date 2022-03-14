@@ -107,6 +107,30 @@ class reportes_mantenimiento {
       'responsable' => $row['responsable']
     );
   }
+
+  // Función para lista de unidades.
+  function listaEquipos($connect){
+    $sql = "SELECT unidad FROM bitacora_mantenimiento GROUP BY unidad";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $unidad[] = array('unidad' => $row['unidad']);
+    }
+
+    if (isset($unidad)) { return $unidad; }
+    else { return null; }
+  }
+
+  // Función para lista de áreas de trabajo.
+  function listaAreasTrabajo($connect){
+    $sql = "SELECT area_trabajo FROM bitacora_mantenimiento GROUP BY area_trabajo";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $area_trabajo[] = array('area_trabajo' => $row['area_trabajo']);
+    }
+
+    if (isset($area_trabajo)) { return $area_trabajo; }
+    else { return null; }
+  }
 }
 
 ?>
