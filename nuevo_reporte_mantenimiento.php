@@ -1,9 +1,12 @@
 <?php
 require_once 'lib/class_reportes_mantenimiento.php';
+require_once 'lib/class_lista_usuarios.php';
 
 $reportes = new reportes_mantenimiento;
+$usuarios = new lista_usuarios;
 
 $reporte_reciente = $reportes -> reporteReciente($connect);
+$lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -21,12 +24,12 @@ include_once 'menu.php';
             <div class="row justify-content-center">
               <div class="col-2">
                 <label for="reporte">No. de reporte:</label><br>
-                <input id="reporte" type="text" name="reporte" value="<?php echo $reporte_reciente+1; ?>">
+                <input id="reporte" type="text" name="reporte" value="<?php echo $reporte_reciente+1; ?>" required>
               </div>
 
               <div class="col-3">
                 <label for="fecha_ingreso">Fecha de ingreso:</label><br>
-                <input id="fecha_ingreso" type="date" name="fecha_ingreso" value="<?php echo date('Y-m-d'); ?>">
+                <input id="fecha_ingreso" type="date" name="fecha_ingreso" value="<?php echo date('Y-m-d'); ?>" required>
               </div>
 
               <div class="col-3">
@@ -36,37 +39,37 @@ include_once 'menu.php';
 
               <div class="col-4">
                 <label for="area_trabajo">Área de trabajo:</label><br>
-                <input id="area_trabajo" type="text" name="area_trabajo">
+                <input id="area_trabajo" type="text" name="area_trabajo" required>
               </div>
 
               <div class="col-3">
                 <label for="unidad">Unidad:</label><br>
-                <input id="unidad" type="text" name="unidad">
+                <input id="unidad" type="text" name="unidad" required>
               </div>
 
               <div class="col-3">
                 <label for="marca">Marca:</label><br>
-                <input id="marca" type="text" name="marca">
+                <input id="marca" type="text" name="marca" required>
               </div>
 
               <div class="col-3">
                 <label for="modelo">Modelo:</label><br>
-                <input id="modelo" type="text" name="modelo">
+                <input id="modelo" type="text" name="modelo" required>
               </div>
 
               <div class="col-3">
                 <label for="solicitante">Solicitante:</label><br>
-                <input id="solicitante" type="text" name="solicitante">
+                <input id="solicitante" type="text" name="solicitante" required>
               </div>
 
               <div class="col-6">
                 <label for="actividad">Actividad:</label><br>
-                <textarea id="actividad" name="actividad"></textarea>
+                <textarea id="actividad" name="actividad" required></textarea>
               </div>
 
               <div class="col-6">
                 <label for="observaciones">Observaciones:</label><br>
-                <textarea id="observaciones" name="observaciones"></textarea>
+                <textarea id="observaciones" name="observaciones" required></textarea>
               </div>
 
               <div class="col-6">
@@ -76,7 +79,15 @@ include_once 'menu.php';
 
               <div class="col-6">
                 <label for="responsable">Responsable:</label><br>
-                <input id="responsable" type="text" name="responsable">
+                <!-- <input id="responsable" type="text" name="responsable"> -->
+                <select name="responsable" required>
+                  <option value=""></option>
+                  <?php if (isset($lista_usuarios)): ?>
+                    <?php foreach ($lista_usuarios as $usr): ?>
+                      <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </select>
               </div>
 
               <div class="col-2 centrar-botones">
