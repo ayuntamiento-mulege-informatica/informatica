@@ -87,6 +87,15 @@ switch ($area) {
         include_once 'imprimir_reporte_mantenimiento.php';
         break;
 
+      // BITÁCORA DE ENTREGA DE TONER Y TINTA.
+      case '/entrega_toner_tinta':
+        include_once 'entrega_toner_tinta.php';
+        break;
+
+      case '/nuevo_registro_toner_tinta':
+        include_once 'nuevo_registro_toner_tinta.php';
+        break;
+
       // GESTIÓN DE TICKETS
 
       case '/revisar_tickets':
