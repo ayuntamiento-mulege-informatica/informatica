@@ -1,9 +1,12 @@
 <?php
 require_once 'lib/class_reportes_mantenimiento.php';
+require_once 'lib/class_lista_usuarios.php';
 
 $reportes = new reportes_mantenimiento;
+$usuarios = new lista_usuarios;
 
 $info_reporte = $reportes -> infoReporte($connect, $parametro_2);
+$lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -76,7 +79,18 @@ include_once 'menu.php';
 
               <div class="col-6">
                 <label for="responsable">Responsable:</label><br>
-                <input id="responsable" type="text" name="responsable" value="<?php echo $info_reporte['responsable']; ?>">
+                <select name="responsable" required>
+                  <!-- <option value=""></option> -->
+                  <?php if (isset($lista_usuarios)): ?>
+                    <?php foreach ($lista_usuarios as $usr): ?>
+                      <?php if ($usr['nombre'] == $info_reporte['responsable']): ?>
+                        <option value="<?php echo $usr['nombre']; ?>" selected><?php echo $usr['nombre']; ?></option>
+                        <?php else: ?>
+                          <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
+                      <?php endif; ?>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
+                </select>
               </div>
 
               <div class="col-2 centrar-botones">

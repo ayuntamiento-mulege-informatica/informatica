@@ -79,12 +79,15 @@ include_once 'menu.php';
 
               <div class="col-6">
                 <label for="responsable">Responsable:</label><br>
-                <!-- <input id="responsable" type="text" name="responsable"> -->
                 <select name="responsable" required>
                   <option value=""></option>
                   <?php if (isset($lista_usuarios)): ?>
                     <?php foreach ($lista_usuarios as $usr): ?>
-                      <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
+                      <?php if ($usr['nombre'] == $_SESSION['nombre_usuario']): ?>
+                        <option value="<?php echo $usr['nombre']; ?>" selected><?php echo $usr['nombre']; ?></option>
+                        <?php else: ?>
+                          <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
+                      <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
                 </select>
