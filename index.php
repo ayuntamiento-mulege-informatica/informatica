@@ -71,6 +71,7 @@ switch ($area) {
         break;
 
       case '/lista_reportes_mantenimiento':
+      case '/lista_reportes_mantenimiento/'.$parametro_2:
         include_once 'lista_reportes_mantenimiento.php';
         break;
 

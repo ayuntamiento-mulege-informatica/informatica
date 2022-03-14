@@ -1,7 +1,14 @@
 <?php
 require_once 'lib/class_reportes_mantenimiento.php';
+require_once 'lib/class_paginador.php';
 
 $reportes_mantenimiento = new reportes_mantenimiento;
+$paginador = new pages;
+
+if (isset($parametro_2)) { $pag = $parametro_2; }
+
+$registros_totales = $paginador -> registrosTotales($connect, 'bitacora_mantenimiento');
+$nPag = $paginador -> nPag($registros_totales, $noReg);
 
 $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimiento($connect, $pag, $noReg);
 
@@ -38,9 +45,9 @@ include_once 'menu.php';
             <?php if (isset($lista_reportes)): ?>
               <?php foreach ($lista_reportes as $reporte): ?>
                 <tr>
-                  <td> <a href="editar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
-                  <td> <a href="eliminar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Eliminar reporte"> <span class="fas fa-2x fa-eraser"></span> </a> </td>
-                  <td> <a href="imprimir_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
+                  <td> <a href="/editar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <td> <a href="/eliminar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Eliminar reporte"> <span class="fas fa-2x fa-eraser"></span> </a> </td>
+                  <td> <a href="/imprimir_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
                   <td><?php echo $reporte['reporte']; ?></td>
                   <td><?php echo $reporte['fecha_ingreso']; ?></td>
                   <td><?php echo $reporte['fecha_salida']; ?></td>
@@ -65,6 +72,17 @@ include_once 'menu.php';
       </div>
     </div>
   </section>
+
+  <div class="row">
+    <div class="col-12">
+      <ul class="paginador">
+        <?php
+        $extra = '/'.$parametro_1.'/';
+        $paginador -> paginador($pag, $nPag, $extra);
+        ?>
+      </ul>
+    </div>
+  </div>
 </main>
 
 <?php
