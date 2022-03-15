@@ -11,7 +11,7 @@ $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_
 $nPag = $paginador -> nPag($registros_totales, $noReg);
 
 if (isset($_POST['accion'])) {
-  $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, $_POST['reporte'], $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad'], $pag, $noReg);
+  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $_POST['id'], $_POST['fecha_cambio'], $_POST['area'], $pag, $noReg);
 }
 else {
   $lista_entrega = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
@@ -32,7 +32,7 @@ include_once 'menu.php';
         <div class="contenido-contenedor">
           <table width="100%" style="font-size: .8rem;">
             <tr>
-              <th colspan="2">OPERACIONES</th>
+              <th>OPERACIONES</th>
               <th>ID</th>
               <th>FECHA DE CAMBIO</th>
               <th>ÁREA</th>
@@ -47,7 +47,6 @@ include_once 'menu.php';
               <?php foreach ($lista_entrega as $entrega): ?>
                 <tr>
                   <td> <a href="/editar_reporte_mantenimiento/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
-                  <td> <a href="/imprimir_reporte_mantenimiento/<?php echo $entrega['id']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
                   <td><?php echo $entrega['id']; ?></td>
                   <td><?php echo $entrega['fecha_cambio']; ?></td>
                   <td><?php echo $entrega['area']; ?></td>
@@ -58,10 +57,10 @@ include_once 'menu.php';
                   <td><?php echo $entrega['recibe']; ?></td>
                 </tr>
               <?php endforeach; ?>
-              <?php else: ?>
-                <tr>
-                  <td colspan="12">No hay reportes para mostrar.</td>
-                </tr>
+            <?php else: ?>
+              <tr>
+                <td colspan="12">No hay reportes para mostrar.</td>
+              </tr>
             <?php endif; ?>
           </table>
         </div>

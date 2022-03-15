@@ -21,7 +21,35 @@ class entrega_toner_tinta {
     }
 
     if (isset($tt)) { return $tt; }
-    else { return false; }
+    else { return null; }
+  }
+
+  // Listado del resultado de la búsqueda de entregas de toner y tinta.
+  function listaTonerTintaBuscar($connect, $id, $fecha_cambio, $area, $pag, $noReg) {
+    if (isset($id)) {
+      $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE id = $id AND fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+    else {
+      $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+
+
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $tt[] = array(
+        'id' => $row['id'],
+        'fecha_cambio' => $row['fecha_cambio'],
+        'area' => $row['area'],
+        'impresora' => $row['impresora'],
+        'tipo' => $row['tipo'],
+        'especificaciones' => $row['especificaciones'],
+        'cantidad' => $row['cantidad'],
+        'recibe' => $row['recibe']
+      );
+    }
+
+    if (isset($tt)) { return $tt; }
+    else { return null; }
   }
 
 
