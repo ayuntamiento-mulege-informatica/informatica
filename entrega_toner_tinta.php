@@ -1,10 +1,12 @@
 <?php
 require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_areas_trabajo.php';
 
 $entrega_toner_tinta = new entrega_toner_tinta;
+$areas_trabajo = new areas_trabajo;
 
 $lista_toner_tinta = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
-// $lista_areas_trabajo = $reportes_mantenimiento -> listaAreasTrabajo($connect);
+$lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -29,7 +31,7 @@ include_once 'menu.php';
               <div class="col-6">
                 <h3>Buscar registros</h3>
 
-                <form class="container-fluid" action="/lista_reportes_mantenimiento" method="post">
+                <form class="container-fluid" action="/lista_entrega_toner_tinta" method="post">
                   <div class="row justify-content-center">
                     <div class="col-6">
                       <label for="">Id:</label><br>
@@ -43,15 +45,7 @@ include_once 'menu.php';
 
                     <div class="col-12">
                       <label for="">Área:</label><br>
-                      <!-- <input type="text" name="area_trabajo"> -->
-                      <select name="area_trabajo">
-                        <option value=""></option>
-                        <?php if (isset($lista_areas_trabajo)): ?>
-                          <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
-                            <option value="<?php echo $area_trabajo['area_trabajo']; ?>"><?php echo $area_trabajo['area_trabajo']; ?></option>
-                          <?php endforeach; ?>
-                        <?php endif; ?>
-                      </select>
+                      <input list="lista_areas" type="text" name="area_trabajo">
                     </div>
 
                     <div class="">
@@ -77,6 +71,16 @@ if (isset($_SESSION['msg'])) {
 
   unset($_SESSION['msg']);
 }
+?>
 
+<?php if (isset($lista_areas_trabajo)): ?>
+  <datalist id="lista_areas">
+    <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
+      <option value="<?php echo $area_trabajo['area']; ?>"><?php echo $area_trabajo['area']; ?></option>
+    <?php endforeach; ?>
+  </datalist>
+<?php endif; ?>
+
+<?php
 include_once 'footer.php';
 ?>

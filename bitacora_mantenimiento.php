@@ -1,10 +1,13 @@
 <?php
 require_once 'lib/class_reportes_mantenimiento.php';
+require_once 'lib/class_areas_trabajo.php';
 
 $reportes_mantenimiento = new reportes_mantenimiento;
+$areas_trabajo = new areas_trabajo;
+
 
 $lista_unidades = $reportes_mantenimiento -> listaEquipos($connect);
-$lista_areas_trabajo = $reportes_mantenimiento -> listaAreasTrabajo($connect);
+$lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -43,27 +46,12 @@ include_once 'menu.php';
 
                     <div class="col-12">
                       <label for="">Unidad:</label><br>
-                      <select name="unidad">
-                        <option value=""></option>
-                        <?php if (isset($lista_unidades)): ?>
-                          <?php foreach ($lista_unidades as $unidad): ?>
-                            <option value="<?php echo $unidad['unidad']; ?>"><?php echo $unidad['unidad']; ?></option>
-                          <?php endforeach; ?>
-                        <?php endif; ?>
-                      </select>
+                      <input list="lista_unidades" type="text" name="unidad" required>
                     </div>
 
                     <div class="col-12">
                       <label for="">Área:</label><br>
-                      <!-- <input type="text" name="area_trabajo"> -->
-                      <select name="area_trabajo">
-                        <option value=""></option>
-                        <?php if (isset($lista_areas_trabajo)): ?>
-                          <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
-                            <option value="<?php echo $area_trabajo['area_trabajo']; ?>"><?php echo $area_trabajo['area_trabajo']; ?></option>
-                          <?php endforeach; ?>
-                        <?php endif; ?>
-                      </select>
+                      <input list="lista_areas" type="text" name="area_trabajo">
                     </div>
 
                     <div class="">
@@ -89,6 +77,24 @@ if (isset($_SESSION['msg'])) {
 
   unset($_SESSION['msg']);
 }
+?>
 
+<?php if (isset($lista_areas_trabajo)): ?>
+  <datalist id="lista_areas">
+    <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
+      <option value="<?php echo $area_trabajo['area']; ?>"><?php echo $area_trabajo['area']; ?></option>
+    <?php endforeach; ?>
+  </datalist>
+<?php endif; ?>
+
+<?php if (isset($lista_unidades)): ?>
+  <datalist id="lista_unidades">
+    <?php foreach ($lista_unidades as $unidad): ?>
+      <option value="<?php echo $unidad['unidad']; ?>"><?php echo $unidad['unidad']; ?></option>
+    <?php endforeach; ?>
+  </datalist>
+<?php endif; ?>
+
+<?php
 include_once 'footer.php';
 ?>
