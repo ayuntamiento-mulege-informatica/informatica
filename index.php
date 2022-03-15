@@ -96,6 +96,11 @@ switch ($area) {
         include_once 'nuevo_registro_toner_tinta.php';
         break;
 
+      case '/lista_entrega_toner_tinta':
+      case '/lista_entrega_toner_tinta/'.$parametro_2:
+        include_once 'lista_entrega_toner_tinta.php';
+        break;
+
       // GESTIÓN DE TICKETS
 
       case '/revisar_tickets':

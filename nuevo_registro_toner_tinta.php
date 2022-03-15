@@ -42,24 +42,24 @@ include_once 'menu.php';
                 <input id="impresora" type="text" name="impresora" required>
               </div>
 
-              <div class="col-4">
-                <label for="tipo">Tipo (Toner / Cartucho):</label><br>
-                <input id="tipo" type="text" name="tipo" required>
+              <div class="col-2">
+                <label for="tipo">Tipo :</label><br>
+                <input id="tipo" type="text" name="tipo" title="Toner, tanque, cartucho." required>
               </div>
 
-              <div class="col-4">
-                <label for="especificaciones">Especificaciones (Toner / Cartucho):</label><br>
-                <input id="especificaciones" type="text" name="especificaciones" required>
+              <div class="col-2">
+                <label for="especificaciones">Modelo:</label><br>
+                <input id="especificaciones" type="text" name="especificaciones" title="Toner, tanque, cartucho." required>
               </div>
 
-              <div class="col-4">
+              <div class="col-2">
                 <label for="cantidad">Cantidad:</label><br>
-                <input id="cantidad"  type="text" name="cantidad" required>
+                <input id="cantidad"  type="number" name="cantidad" min="0" required>
               </div>
 
               <div class="col-6">
-                <label for="nombre">Nombre (Recibe):</label><br>
-                <input id="nombre" type="text" name="nombre" required>
+                <label for="recibe">Nombre (Recibe):</label><br>
+                <input id="recibe" type="text" name="recibe" required>
               </div>
             </div>
 

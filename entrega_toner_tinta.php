@@ -23,7 +23,7 @@ include_once 'menu.php';
               <div class="col-6">
                 <h3>Registros</h3>
                 <a class="enlace-boton" href="/nuevo_registro_toner_tinta">Nuevo registro</a>
-                <a class="enlace-boton" href="/lista_registro_toner_tinta">Lista de reportes</a>
+                <a class="enlace-boton" href="/lista_entrega_toner_tinta">Lista entrega de toner y tinta</a>
               </div>
 
               <div class="col-6">
@@ -72,7 +72,7 @@ include_once 'menu.php';
 if (isset($_SESSION['msg'])) {
   echo '<script>
   alert("'.$_SESSION['msg'].'");
-  location.href="/bitacora_mantenimiento";
+  location.href="/entrega_toner_tinta";
   </script>';
 
   unset($_SESSION['msg']);
