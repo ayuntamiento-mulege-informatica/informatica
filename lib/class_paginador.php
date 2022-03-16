@@ -49,6 +49,14 @@ class pages{
 	}
 
 	/* Función para obtener los registros totales en la tabla solicitada. */
+	public function registrosTotalesListaReportesMantenimiento($connect, $fecha_ingreso, $area_trabajo, $unidad){
+		$sql = "SELECT COUNT(*) AS contar FROM bitacora_mantenimiento WHERE fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%'";
+		$query = mysqli_query($connect, $sql);
+		$row = mysqli_fetch_array($query);
+		return $row['contar'];
+	}
+
+	/* Función para obtener los registros totales de la bitácora de entrega de toner y tinta de acuerdo a lo solicitado en el formulario de búsqueda. */
 	public function registrosTotaleslistaEntregaTonerTinta($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones){
 		$sql = "SELECT COUNT(*) AS contar FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' AND impresora LIKE '%$impresora%' AND tipo LIKE '%$tipo%' AND especificaciones LIKE '%$especificaciones%'";
 		$query = mysqli_query($connect, $sql);
