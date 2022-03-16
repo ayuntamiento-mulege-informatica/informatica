@@ -89,6 +89,7 @@ switch ($area) {
 
       // BITÁCORA DE ENTREGA DE TONER Y TINTA.
       case '/entrega_toner_tinta':
+      case '/entrega_toner_tinta/'.$parametro_2:
         include_once 'entrega_toner_tinta.php';
         break;
 

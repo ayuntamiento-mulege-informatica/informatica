@@ -25,14 +25,8 @@ class entrega_toner_tinta {
   }
 
   // Listado del resultado de la búsqueda de entregas de toner y tinta.
-  function listaTonerTintaBuscar($connect, $id, $fecha_cambio, $area, $pag, $noReg) {
-    if (isset($id)) {
-      $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE id = $id AND fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
-    }
-    else {
-      $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
-    }
-
+  function listaTonerTintaBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg) {
+    $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' AND impresora LIKE '%$impresora%' AND tipo LIKE '%$tipo%' AND especificaciones LIKE '%$especificaciones%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
 
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
@@ -69,6 +63,42 @@ class entrega_toner_tinta {
     mysqli_query($connect, $sql) or die($connect -> error.' No se ha podido realizar el registro.');
 
     return 'El registro se ha realizado correctamente.';
+  }
+
+  // Lista de impresoras.
+  function listaImpresoras($connect) {
+    $sql = "SELECT impresora FROM bitacora_entrega_tinta_toner GROUP BY impresora";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $impresora[] = array( 'impresora' => $row['impresora'] );
+    }
+
+    if (isset($impresora)) { return $impresora; }
+    else { return null; }
+  }
+
+  // Lista de tipos de impresora.
+  function listaTipoImpresora($connect) {
+    $sql = "SELECT tipo FROM bitacora_entrega_tinta_toner GROUP BY tipo";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $tipo[] = array( 'tipo' => $row['tipo'] );
+    }
+
+    if (isset($tipo)) { return $tipo; }
+    else { return null; }
+  }
+
+  // Lista de especificaciones de tinta o toner.
+  function listaEspecificaciones($connect) {
+    $sql = "SELECT especificaciones FROM bitacora_entrega_tinta_toner GROUP BY especificaciones";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $especificaciones[] = array( 'especificaciones' => $row['especificaciones'] );
+    }
+
+    if (isset($especificaciones)) { return $especificaciones; }
+    else { return null; }
   }
 }
 

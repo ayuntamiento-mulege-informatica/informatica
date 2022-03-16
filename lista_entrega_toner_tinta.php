@@ -7,15 +7,18 @@ $paginador = new pages;
 
 if (isset($parametro_2)) { $pag = $parametro_2; }
 
-$registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_tinta_toner');
-$nPag = $paginador -> nPag($registros_totales, $noReg);
 
 if (isset($_POST['accion'])) {
-  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $_POST['id'], $_POST['fecha_cambio'], $_POST['area'], $pag, $noReg);
+  $registros_totales = $paginador -> registrosTotaleslistaEntregaTonerTinta($connect, $_POST['fecha_cambio'], $_POST['area'], $_POST['impresora'], $_POST['tipo'], $_POST['especificaciones']);
+
+  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $_POST['fecha_cambio'], $_POST['area'], $_POST['impresora'], $_POST['tipo'], $_POST['especificaciones'], $pag, $noReg);
 }
 else {
+  $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_tinta_toner');
   $lista_entrega = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
 }
+
+$nPag = $paginador -> nPag($registros_totales, $noReg);
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -46,7 +49,7 @@ include_once 'menu.php';
             <?php if (isset($lista_entrega)): ?>
               <?php foreach ($lista_entrega as $entrega): ?>
                 <tr>
-                  <td> <a href="/editar_reporte_mantenimiento/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <td> <a href="/editar_toner_tinta/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
                   <td><?php echo $entrega['id']; ?></td>
                   <td><?php echo $entrega['fecha_cambio']; ?></td>
                   <td><?php echo $entrega['area']; ?></td>

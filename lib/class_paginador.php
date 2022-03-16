@@ -49,40 +49,8 @@ class pages{
 	}
 
 	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesCurp($connect, $curp){
-		$sql = "SELECT COUNT(*) AS contar FROM nomina WHERE curp = '$curp'";
-		$query = mysqli_query($connect, $sql);
-		$row = mysqli_fetch_array($query);
-		return $row['contar'];
-	}
-
-	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesRfc($connect, $rfc){
-		$sql = "SELECT COUNT(*) AS contar FROM nomina WHERE rfc = '$rfc'";
-		$query = mysqli_query($connect, $sql);
-		$row = mysqli_fetch_array($query);
-		return $row['contar'];
-	}
-
-	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesBimestre($connect, $bimestre){
-		$sql = "SELECT COUNT(*) AS contar FROM nomina WHERE bimestre = '$bimestre'";
-		$query = mysqli_query($connect, $sql);
-		$row = mysqli_fetch_array($query);
-		return $row['contar'];
-	}
-
-	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesQuincena($connect, $quincena){
-		$sql = "SELECT COUNT(*) AS contar FROM nomina WHERE quincena = '$quincena'";
-		$query = mysqli_query($connect, $sql);
-		$row = mysqli_fetch_array($query);
-		return $row['contar'];
-	}
-
-	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesNombre($connect, $a_paterno, $a_materno, $nombre){
-		$sql = "SELECT COUNT(*) AS contar FROM nomina WHERE a_paterno LIKE '%$a_paterno%' AND a_materno LIKE '%$a_materno%' AND nombre LIKE '%$nombre%'";
+	public function registrosTotaleslistaEntregaTonerTinta($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones){
+		$sql = "SELECT COUNT(*) AS contar FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' AND impresora LIKE '%$impresora%' AND tipo LIKE '%$tipo%' AND especificaciones LIKE '%$especificaciones%'";
 		$query = mysqli_query($connect, $sql);
 		$row = mysqli_fetch_array($query);
 		return $row['contar'];
