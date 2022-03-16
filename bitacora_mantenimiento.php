@@ -35,6 +35,11 @@ include_once 'menu.php';
                 <form class="container-fluid" action="/lista_reportes_mantenimiento" method="post">
                   <div class="row justify-content-center">
                     <div class="col-6">
+                      <label for="">No. Reporte:</label><br>
+                      <input type="text" name="reporte">
+                    </div>
+
+                    <div class="col-6">
                       <label for="">Fecha del entrada:</label><br>
                       <input type="date" name="fecha_ingreso">
                     </div>
@@ -44,7 +49,7 @@ include_once 'menu.php';
                       <input list="lista_unidades" type="text" name="unidad">
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-6">
                       <label for="">Área:</label><br>
                       <input list="lista_areas" type="text" name="area_trabajo">
                     </div>

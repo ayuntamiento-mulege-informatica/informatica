@@ -56,8 +56,13 @@ class reportes_mantenimiento {
   }
 
   // Función para obtener lista de reportes por búsqueda.
-  function listaReportesMantenimientoBuscar($connect, $fecha_ingreso, $area_trabajo, $unidad, $pag, $noReg) {
+  function listaReportesMantenimientoBuscar($connect, $reporte, $fecha_ingreso, $area_trabajo, $unidad, $pag, $noReg) {
+    if (isset($reporte)) {
+      $sql = "SELECT * FROM bitacora_mantenimiento WHERE reporte = $reporte ORDER BY reporte ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+    else {
       $sql = "SELECT * FROM bitacora_mantenimiento WHERE fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%' ORDER BY reporte ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
 
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {

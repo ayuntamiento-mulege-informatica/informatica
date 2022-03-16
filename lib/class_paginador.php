@@ -49,8 +49,14 @@ class pages{
 	}
 
 	/* Función para obtener los registros totales en la tabla solicitada. */
-	public function registrosTotalesListaReportesMantenimiento($connect, $fecha_ingreso, $area_trabajo, $unidad){
-		$sql = "SELECT COUNT(*) AS contar FROM bitacora_mantenimiento WHERE fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%'";
+	public function registrosTotalesListaReportesMantenimiento($connect, $reporte, $fecha_ingreso, $area_trabajo, $unidad){
+		if ($reporte != '') {
+      $sql = "SELECT COUNT(*) AS contar FROM bitacora_mantenimiento WHERE reporte LIKE $reporte";
+    }
+    else {
+      $sql = "SELECT COUNT(*) AS contar FROM bitacora_mantenimiento WHERE fecha_ingreso LIKE '%$fecha_ingreso%' AND area_trabajo LIKE '%$area_trabajo%' AND unidad LIKE '%$unidad%'";
+    }
+
 		$query = mysqli_query($connect, $sql);
 		$row = mysqli_fetch_array($query);
 		return $row['contar'];

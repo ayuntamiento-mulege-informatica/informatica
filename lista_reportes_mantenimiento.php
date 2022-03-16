@@ -9,9 +9,17 @@ if (isset($parametro_2)) { $pag = $parametro_2; }
 
 
 if (isset($_POST['accion'])) {
-  $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad']);
+  if (isset($_POST['reporte'])) {
+    $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, $_POST['reporte'], null, null, null);
 
-  $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad'], $pag, $noReg);
+    $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, $_POST['reporte'], null, null, null, $pag, $noReg);
+  }
+  else {
+    $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, null, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad']);
+
+    $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, null, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad'], $pag, $noReg);
+  }
+
 }
 else {
   $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_mantenimiento');
