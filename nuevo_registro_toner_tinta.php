@@ -84,5 +84,8 @@ include_once 'menu.php';
     </div>
   </section>
 </main>
+
 <script src="/js/previsualizar_imagen.js"></script>
+<script src="/js/comprobar_extension_archivo.js" type="text/javascript"></script>
+
 <?php include_once 'footer.php'; ?>

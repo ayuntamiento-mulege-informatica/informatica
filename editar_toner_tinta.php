@@ -91,6 +91,7 @@ include_once 'menu.php';
 </main>
 
 <script src="/js/previsualizar_imagen.js"></script>
+<script src="/js/comprobar_extension_archivo.js" type="text/javascript"></script>
 
 <?php
 if (isset($_SESSION['msg'])) {
