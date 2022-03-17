@@ -109,6 +109,10 @@ class entrega_toner_tinta {
     $directorio = '../evidencia/'.$id.'.jpg';
     $thumbnail = '../evidencia/thumbnail_'.$id.'.jpg';
     if(move_uploaded_file($evidencia, $directorio)){
+      // Redimensiona la imagen asociada a la evidencia para ahorrar espacio de almacenamiento y evitar en lo posible el uso excesivo de RAM y CPU.
+      passthru("convert -resize 1024x1024 -background white -alpha remove -alpha off -quality 80 $directorio $directorio");
+
+      // Crea una vista en miniatura de la imagen asociada a la evidencia.
       passthru("convert -thumbnail 256x256 -background white -alpha remove -alpha off -quality 80 $directorio $thumbnail");
 
       return $id.'.jpg';

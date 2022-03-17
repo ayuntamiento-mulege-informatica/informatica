@@ -62,12 +62,12 @@ include_once 'menu.php';
                 <input id="recibe" type="text" name="recibe" required>
               </div>
 
-              <div class="col-6">
+              <div class="col-8">
                 <label for="">Foto:</label><br>
                 <input type="file" name="evidencia" id="evidencia" onchange="return fileValidation('evidencia')">
               </div>
 
-              <div class="col-xl-6">
+              <div class="col-xl-4">
                 <label for="">Vista previa:</label><br>
                 <output id="list1" style="width: 100%;"></output>
               </div>

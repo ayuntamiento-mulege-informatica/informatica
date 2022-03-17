@@ -64,7 +64,7 @@ include_once 'menu.php';
 
               <div class="col-4">
                 <label for="">Foto actual:</label><br>
-                <img src="/evidencia/thumbnail_<?php echo $info_reporte['evidencia']; ?>" alt="">
+                <a href="/evidencia/<?php echo $info_reporte['evidencia']; ?>" target="_blank"> <img class="imagen-formulario" src="/evidencia/thumbnail_<?php echo $info_reporte['evidencia']; ?>" alt=""> </a>
               </div>
 
               <div class="col-4">
@@ -74,7 +74,7 @@ include_once 'menu.php';
 
               <div class="col-4">
                 <label for="">Vista previa:</label><br>
-                <output id="list1" style="width: 100%;"></output>
+                <output id="list1"></output>
               </div>
             </div>
 
@@ -97,7 +97,7 @@ include_once 'menu.php';
 if (isset($_SESSION['msg'])) {
   echo '<script>
   alert("'.$_SESSION['msg'].'");
-  location.href="/editar_reporte_mantenimiento/'.$parametro_2.'";
+  location.href="/editar_toner_tinta/'.$parametro_2.'";
   </script>';
 
   unset($_SESSION['msg']);

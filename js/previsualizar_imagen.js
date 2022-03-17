@@ -7,7 +7,7 @@ function archivo1(evt) {
     var reader = new FileReader();
     reader.onload = (function(theFile) {
       return function(e) {
-        document.getElementById("list1").innerHTML = ['<img class="upload-thumb" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
+        document.getElementById("list1").innerHTML = ['<img class="imagen-formulario" src="', e.target.result, '" title="', escape(theFile.name), '"/>'].join('');
       };
     })(f);
     reader.readAsDataURL(f);
