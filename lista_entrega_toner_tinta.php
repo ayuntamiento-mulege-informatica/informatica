@@ -8,10 +8,30 @@ $paginador = new pages;
 if (isset($parametro_2)) { $pag = $parametro_2; }
 
 
-if (isset($_POST['accion'])) {
-  $registros_totales = $paginador -> registrosTotaleslistaEntregaTonerTinta($connect, $_POST['fecha_cambio'], $_POST['area'], $_POST['impresora'], $_POST['tipo'], $_POST['especificaciones']);
+if (isset($_POST['accion']) || isset($_SESSION['lista_toner_tinta'])) {
+  if(isset($_POST['fecha_cambio'])) { $fecha_cambio = $_SESSION['lista_toner_tinta']['fecha_cambio'] = $_POST['fecha_cambio']; }
+  elseif (isset($_SESSION['lista_toner_tinta']['fecha_cambio'])) { $fecha_cambio = $_SESSION['lista_toner_tinta']['fecha_cambio']; }
+  else { $fecha_cambio = null; }
 
-  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $_POST['fecha_cambio'], $_POST['area'], $_POST['impresora'], $_POST['tipo'], $_POST['especificaciones'], $pag, $noReg);
+  if(isset($_POST['area'])) { $area = $_SESSION['lista_toner_tinta']['area'] = $_POST['area']; }
+  elseif (isset($_SESSION['lista_toner_tinta']['area'])) { $area = $_SESSION['lista_toner_tinta']['area']; }
+  else { $area = null; }
+
+  if(isset($_POST['impresora'])) { $impresora = $_SESSION['lista_toner_tinta']['impresora'] = $_POST['impresora']; }
+  elseif (isset($_SESSION['lista_toner_tinta']['impresora'])) { $impresora = $_SESSION['lista_toner_tinta']['impresora']; }
+  else { $impresora = null; }
+
+  if(isset($_POST['tipo'])) { $tipo = $_SESSION['lista_toner_tinta']['tipo'] = $_POST['tipo']; }
+  elseif (isset($_SESSION['lista_toner_tinta']['tipo'])) { $tipo = $_SESSION['lista_toner_tinta']['tipo']; }
+  else { $tipo = null; }
+
+  if(isset($_POST['especificaciones'])) { $especificaciones = $_SESSION['lista_toner_tinta']['especificaciones'] = $_POST['especificaciones']; }
+  elseif (isset($_SESSION['lista_toner_tinta']['especificaciones'])) { $especificaciones = $_SESSION['lista_toner_tinta']['especificaciones']; }
+  else { $especificaciones = null; }
+
+  $registros_totales = $paginador -> registrosTotaleslistaEntregaTonerTinta($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones);
+
+  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg);
 }
 else {
   $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_tinta_toner');

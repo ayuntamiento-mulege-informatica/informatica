@@ -8,6 +8,8 @@ $usuarios = new lista_usuarios;
 $registro_reciente = $entrega_toner_tinta -> registroRecienteTonerTinta($connect);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
+if (isset($_SESSION['lista_toner_tinta'])) { unset($_SESSION['lista_toner_tinta']); }
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>

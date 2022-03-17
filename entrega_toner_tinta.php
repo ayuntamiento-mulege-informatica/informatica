@@ -11,6 +11,8 @@ $lista_tipo_impresora = $entrega_toner_tinta -> listaTipoImpresora($connect);
 $lista_especificaciones = $entrega_toner_tinta -> listaEspecificaciones($connect);
 $lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
+if (isset($_SESSION['lista_toner_tinta'])) { unset($_SESSION['lista_toner_tinta']); }
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>
