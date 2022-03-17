@@ -20,7 +20,10 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Nuevo reporte de mantenimiento</h2>
-          <p align="center"> <a href="/nuevo_reporte_mantenimiento">Abrir reporte de mantenimiento</a> </p>
+          <p align="center">
+            <a href="/nuevo_reporte_mantenimiento" title="Nuevo reporte"> <span class="fas fa-2x fa-plus"></span> </a>
+            <a href="/imprimir_reporte_mantenimiento/<?php echo $info_reporte['reporte']; ?>" title="Imprimir reporte de mantenimiento" target="_blank"> <span class="fas fa-2x fa-print"></span> </a>
+          </p>
         </div>
         <div class="contenido-contenedor">
           <form class="container-fluid" action="/lib/procesar_info_reporte_mantenimiento.php" method="post">
