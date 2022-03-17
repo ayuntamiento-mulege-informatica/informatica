@@ -109,6 +109,16 @@ select {
   background: white;
 }
 
+.imagen-formulario {
+  padding: .5em;
+  color: #567abc;
+  border: 1px solid #1f53c4;
+  border-radius: 4px;
+  background: white;
+  max-width: 100%;
+  max-height: 256px;
+}
+
 /* Estilos para botones en formularios y botones simples. */
 input[type='submit'],
 input[type='reset'],
