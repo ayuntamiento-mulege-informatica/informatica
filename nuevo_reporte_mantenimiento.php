@@ -8,6 +8,8 @@ $usuarios = new lista_usuarios;
 $reporte_reciente = $reportes -> reporteReciente($connect);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
+if (isset($_SESSION['lista_reportes_mantenimiento'])) { unset($_SESSION['lista_reportes_mantenimiento']); }
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>

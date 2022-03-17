@@ -9,6 +9,8 @@ $areas_trabajo = new areas_trabajo;
 $lista_unidades = $reportes_mantenimiento -> listaEquipos($connect);
 $lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
+if (isset($_SESSION['lista_reportes_mantenimiento'])) { unset($_SESSION['lista_reportes_mantenimiento']); }
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>

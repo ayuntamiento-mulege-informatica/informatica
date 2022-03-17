@@ -56,7 +56,7 @@ class reportes_mantenimiento {
   }
 
   // Función para obtener lista de reportes por búsqueda.
-  function listaReportesMantenimientoBuscar($connect, $reporte, $fecha_ingreso, $area_trabajo, $unidad, $pag, $noReg) {
+  function listaReportesMantenimientoBuscar($connect, $reporte, $fecha_ingreso, $unidad, $area_trabajo, $pag, $noReg) {
     if (isset($reporte)) {
       $sql = "SELECT * FROM bitacora_mantenimiento WHERE reporte = $reporte ORDER BY reporte ASC LIMIT ".($pag-1)*$noReg.",$noReg";
     }

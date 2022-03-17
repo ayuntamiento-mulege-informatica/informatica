@@ -8,6 +8,8 @@ $usuarios = new lista_usuarios;
 $info_reporte = $reportes -> infoReporte($connect, $parametro_2);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
+if (isset($_SESSION['lista_reportes_mantenimiento'])) { unset($_SESSION['lista_reportes_mantenimiento']); }
+
 include_once 'header.php';
 include_once 'menu.php';
 ?>
@@ -18,6 +20,7 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Nuevo reporte de mantenimiento</h2>
+          <p align="center"> <a href="/nuevo_reporte_mantenimiento">Abrir reporte de mantenimiento</a> </p>
         </div>
         <div class="contenido-contenedor">
           <form class="container-fluid" action="/lib/procesar_info_reporte_mantenimiento.php" method="post">

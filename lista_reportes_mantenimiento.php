@@ -8,18 +8,25 @@ $paginador = new pages;
 if (isset($parametro_2)) { $pag = $parametro_2; }
 
 
-if (isset($_POST['accion'])) {
-  if (isset($_POST['reporte'])) {
-    $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, $_POST['reporte'], null, null, null);
+if (isset($_POST['accion']) || isset($_SESSION['lista_reportes_mantenimiento'])) {
+  if ($_POST['reporte'] != '') { $reporte = $_SESSION['lista_reportes_mantenimiento']['reporte'] = $_POST['reporte']; }
+  elseif (isset($_SESSION['lista_reportes_mantenimiento']['reporte'])) { $reporte = $_SESSION['lista_reportes_mantenimiento']['reporte']; }
+  else { $reporte = null; }
 
-    $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, $_POST['reporte'], null, null, null, $pag, $noReg);
-  }
-  else {
-    $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, null, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad']);
+  if ($_POST['fecha_ingreso'] != '') { $fecha_ingreso = $_SESSION['lista_reportes_mantenimiento']['fecha_ingreso'] = $_POST['fecha_ingreso']; }
+  elseif (isset($_SESSION['lista_reportes_mantenimiento']['fecha_ingreso'])) { $fecha_ingreso = $_SESSION['lista_reportes_mantenimiento']['fecha_ingreso']; }
+  else { $fecha_ingreso = null; }
 
-    $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, null, $_POST['fecha_ingreso'], $_POST['area_trabajo'], $_POST['unidad'], $pag, $noReg);
-  }
+  if ($_POST['unidad'] != '') { $unidad = $_SESSION['lista_reportes_mantenimiento']['unidad'] = $_POST['unidad']; }
+  elseif (isset($_SESSION['lista_reportes_mantenimiento']['unidad'])) { $unidad = $_SESSION['lista_reportes_mantenimiento']['unidad']; }
+  else { $unidad = null; }
 
+  if ($_POST['area_trabajo'] != '') { $area_trabajo = $_SESSION['lista_reportes_mantenimiento']['area_trabajo'] = $_POST['area_trabajo']; }
+  elseif (isset($_SESSION['lista_reportes_mantenimiento']['area_trabajo'])) { $area_trabajo = $_SESSION['lista_reportes_mantenimiento']['area_trabajo']; }
+  else { $area_trabajo = null; }
+
+  $registros_totales = $paginador -> registrosTotalesListaReportesMantenimiento($connect, $reporte, $fecha_ingreso, $unidad, $area_trabajo);
+  $lista_reportes = $reportes_mantenimiento -> listaReportesMantenimientoBuscar($connect, $reporte, $fecha_ingreso, $unidad, $area_trabajo, $pag, $noReg);
 }
 else {
   $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_mantenimiento');
@@ -38,6 +45,7 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Lista de reportes de mantenimiento</h2>
+          <p align="center"> <a href="/nuevo_reporte_mantenimiento">Abrir reporte de mantenimiento</a> </p>
         </div>
 
         <div class="contenido-contenedor">
@@ -78,10 +86,10 @@ include_once 'menu.php';
                   <td><?php echo $reporte['responsable']; ?></td>
                 </tr>
               <?php endforeach; ?>
-              <?php else: ?>
-                <tr>
-                  <td colspan="12">No hay reportes para mostrar.</td>
-                </tr>
+            <?php else: ?>
+              <tr>
+                <td colspan="12">No hay reportes para mostrar.</td>
+              </tr>
             <?php endif; ?>
           </table>
         </div>
