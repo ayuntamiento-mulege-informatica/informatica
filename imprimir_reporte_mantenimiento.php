@@ -15,7 +15,7 @@ else {
     <html lang="es-MX">
     <head>
       <meta charset="utf-8">
-      <title>Título de propiedad - Página 1</title>
+      <title>IMPRESIÓN DEL REPORTE DE MANTENIMIENTO No. <?php echo $info_reporte['reporte']; ?></title>
       <link rel="stylesheet" media="screen" href="/css/screen.css">
       <link rel="stylesheet" media="print" href="/css/print.css">
     </head>
@@ -23,59 +23,78 @@ else {
       <main>
         <div class="pagina">
           <div class="pagina-contenido">
-            <div style="width: 6.91cm; height: 3.88cm; float: left;"> </div>
-
-            <div style="width: 12.8cm; height: 3.88cm; float: left;"> </div>
-
-            <div style="width: 6.23cm; height: 3.88cm; float: left;">
-              <!-- NÚMERO DE REPORTE -->
-              <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['reporte']; ?></div>
-              <!-- FECHA DE INGRESO -->
-              <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['fecha_ingreso']; ?></div>
-              <!-- FECHA DE SALIDA -->
-              <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['fecha_salida']; ?></div>
+            <!-- ENCABEZADO -->
+            <div style="height: 3.88cm; display: flex;">
+              <div style="width: 6.91cm;"> </div>
+              <div style="width: 12.8cm;"> </div>
+              <div style="width: 6.23cm;">
+                <!-- NÚMERO DE REPORTE -->
+                <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['reporte']; ?></div>
+                <!-- FECHA DE INGRESO -->
+                <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['fecha_ingreso']; ?></div>
+                <!-- FECHA DE SALIDA -->
+                <div style="width: 100%; height: 1.29cm; padding: .6cm .1cm 0 .1cm; text-align: right;"><?php echo $info_reporte['fecha_salida']; ?></div>
+              </div>
             </div>
 
-            <div style="width: 100%; height: .7cm; float: left;"> </div>
+            <!-- ESPACIO VACÍO -->
+            <div style="width: 100%; height: .7cm;"> </div>
 
-            <!-- ÁREA DE TRABAJO -->
-            <div style="width: 20%; height: 2.6cm; float: left;">
-              <div style="width:100%; height: .8cm;"> </div>
-              <div style="width: 100%; height: 1.95cm; text-align: center;"><?php echo $info_reporte['area_trabajo']; ?></div>
+            <!-- INFORMACIÓN DEL EQUIPO -->
+            <div style="display: flex; height: 2.5cm;">
+              <!-- ÁREA DE TRABAJO -->
+              <div style="width: 25%; height: 2.5cm;">
+                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['area_trabajo']; ?></div>
+              </div>
+
+              <!-- UNIDAD -->
+              <div style="width: 25%; height: 2.5cm;">
+                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['unidad']; ?></div>
+              </div>
+
+              <!-- MARCA -->
+              <div style="width: 25%; height: 2.5cm;">
+                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['marca']; ?></div>
+              </div>
+
+              <!-- MODELO -->
+              <div style="width: 25%; height: 2.5cm;">
+                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['modelo']; ?></div>
+              </div>
             </div>
 
-            <!-- UNIDAD -->
-            <div style="width: 20%; height: 2.6cm; float: left">
-              <div style="width:100%; height: .8cm;"> </div>
-              <div style="width: 100%; height: 1.95cm; text-align: center;"><?php echo $info_reporte['unidad']; ?></div>
+            <!-- INFORMACIÓN DEL SOLICITANTE Y DE QUIEN RECIBE. -->
+            <div style="display: flex; height: 2cm;">
+              <!-- SOLICITA -->
+              <div style="width: 50%; height: 2cm;">
+                <div style="width: 100%; height: 2cm; padding: .7cm .1cm 0 .1cm;">
+                  <?php echo $info_reporte['solicitante']; ?>
+                </div>
+              </div>
+
+              <!-- RECIBE -->
+              <div style="width: 50%; height: 2cm;">
+                <div style="width: 100%; height: 2cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['recibe']; ?></div>
+              </div>
             </div>
 
-            <!-- MARCA -->
-            <div style="width: 20%; height: 2.6cm; float: left">
-              <div style="width:100%; height: .8cm;"> </div>
-              <div style="width: 100%; height: 1.95cm; text-align: center;"><?php echo $info_reporte['marca']; ?></div>
+            <!-- INFORMACIÓN DE ACTIVIDAD -->
+            <div style="display: flex; height: 3cm;">
+              <!-- ACTIVIDAD -->
+              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['actividad']; ?></div>
+
+              <!-- OBSERVACIONES -->
+              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['observaciones']; ?></div>
             </div>
 
-            <!-- MODELO -->
-            <div style="width: 20%; height: 2.6cm; float: left">
-              <div style="width:100%; height: .8cm;"> </div>
-              <div style="width: 100%; height: 1.95cm; text-align: center;"><?php echo $info_reporte['modelo']; ?></div>
+            <!-- CONCLUSIONES Y ESTADO FINAL -->
+            <div style="display: flex; height:">
+              <!-- CONCLUSIONES -->
+              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['conclusiones']; ?></div>
+
+              <!-- ESTADO FINAL -->
+              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['estado_final']; ?></div>
             </div>
-
-            <!-- SOLICITANTE -->
-            <div style="width: 20%; height: 2.6cm; float: left">
-              <div style="width:100%; height: .8cm;"> </div>
-              <div style="width: 100%; height: 1.95cm; text-align: center;"><?php echo $info_reporte['solicitante']; ?></div>
-            </div>
-
-            <!-- ACTIVIDAD -->
-            <div style="width: 50%; height: 3.4cm; float: left; padding: .2cm .1cm;"><strong>ACTIVIDAD:</strong> <?php echo $info_reporte['actividad']; ?></div>
-
-            <!-- OBSERVACIONES -->
-            <div style="width: 50%; height: 3.4cm; float: left; padding: .2cm .1cm;"><strong>OBSERVACIONES:</strong> <?php echo $info_reporte['observaciones']; ?></div>
-
-            <!-- CONCLUSIONES -->
-            <div style="width: 100%; height: 4.3cm; float: left; padding: .2cm .1cm;"><strong>CONCLUSIONES:</strong> <?php echo $info_reporte['conclusiones']; ?></div>
 
             <!-- ESPACIO VACÍO -->
             <div style="width: 100%; height: 3cm; float: left;"> </div>
