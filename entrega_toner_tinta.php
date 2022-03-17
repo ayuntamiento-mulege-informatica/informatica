@@ -86,40 +86,38 @@ if (isset($_SESSION['msg'])) {
 
   unset($_SESSION['msg']);
 }
-?>
 
-<?php if (isset($lista_areas_trabajo)): ?>
-  <datalist id="lista_areas">
-    <?php foreach ($lista_areas_trabajo as $area_trabajo): ?>
-      <option value="<?php echo $area_trabajo['area']; ?>"><?php echo $area_trabajo['area']; ?></option>
-    <?php endforeach; ?>
-  </datalist>
-<?php endif; ?>
+if (isset($lista_areas_trabajo)){
+  echo '<datalist id="lista_areas">';
+  foreach ($lista_areas_trabajo as $area_trabajo){
+    echo '<option value="'.$area_trabajo['area'].'">'.$area_trabajo['area'].'</option>';
+  }
+  echo '</datalist>';
+}
 
-<?php if (isset($lista_impresoras)): ?>
-  <datalist id="impresoras">
-    <?php foreach ($lista_impresoras as $impresora): ?>
-      <option value="<?php echo $impresora['impresora']; ?>"><?php echo $impresora['impresora']; ?></option>
-    <?php endforeach; ?>
-  </datalist>
-<?php endif; ?>
+if (isset($lista_impresoras)) {
+  echo '<datalist id="impresoras">';
+  foreach ($lista_impresoras as $impresora) {
+    echo '<option value="'.$impresora['impresora'].'">'.$impresora['impresora'].'</option>';
+  }
+  echo '</datalist>';
+}
 
-<?php if (isset($lista_tipo_impresora)): ?>
-  <datalist id="tipo_impresora">
-    <?php foreach ($lista_tipo_impresora as $tipo): ?>
-      <option value="<?php echo $tipo['tipo']; ?>"><?php echo $tipo['tipo']; ?></option>
-    <?php endforeach; ?>
-  </datalist>
-<?php endif; ?>
+if (isset($lista_tipo_impresora)) {
+  echo '<datalist id="tipo_impresora">';
+  foreach ($lista_tipo_impresora as $tipo) {
+    echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>';
+  }
+  echo '</datalist>';
+}
 
-<?php if (isset($lista_especificaciones)): ?>
-  <datalist id="especificaciones">
-    <?php foreach ($lista_especificaciones as $especificaciones): ?>
-      <option value="<?php echo $especificaciones['especificaciones']; ?>"><?php echo $especificaciones['especificaciones']; ?></option>
-    <?php endforeach; ?>
-  </datalist>
-<?php endif; ?>
+if (isset($lista_especificaciones)) {
+  echo '<datalist id="especificaciones">';
+  foreach ($lista_especificaciones as $especificaciones){
+    echo '<option value="'.$especificaciones['especificaciones'].'">'.$especificaciones['especificaciones'].'</option>';
+  }
+  echo '</datalist>';
+}
 
-<?php
 include_once 'footer.php';
 ?>
