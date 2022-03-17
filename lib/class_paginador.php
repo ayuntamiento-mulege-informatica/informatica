@@ -16,9 +16,13 @@ class pages{
 		else echo NULL;
 		// Muestra el total de páginas que conforman la galería.
 		for($i=1; $i < $nPag+1; $i++){
-			if($i >= $pag-2 && $i <= $pag+2){
-				if($i == $pag){ echo '<li class="active"><span>'.$i.'</span></li>';}// Impide que la página actual tenga enlace.
-				else{ echo '<li><a href="'.$extra.$i.'">'.$i.'</a></li>'; }
+			if($i >= $pag-5 && $i <= $pag+5){
+				if($i == $pag){
+					echo '<li class="active"><span>'.$i.'</span></li>';//Impide que la página actual tenga enlace.
+				} else{
+          if ($i == 1) { echo '<li><a href="'.$extra.'">1</a></li>'; }
+          else { echo '<li><a href="'.$extra.$i.'">'.$i.'</a></li>'; }
+				}
 			}
 		}
 		// Avanza 10 páginas.
