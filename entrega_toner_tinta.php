@@ -83,39 +83,30 @@ if (isset($_SESSION['msg'])) {
   alert("'.$_SESSION['msg'].'");
   location.href="/entrega_toner_tinta";
   </script>';
-
   unset($_SESSION['msg']);
 }
 
 if (isset($lista_areas_trabajo)){
   echo '<datalist id="lista_areas">';
-  foreach ($lista_areas_trabajo as $area_trabajo){
-    echo '<option value="'.$area_trabajo['area'].'">'.$area_trabajo['area'].'</option>';
-  }
+  foreach ($lista_areas_trabajo as $area_trabajo){ echo '<option value="'.$area_trabajo['area'].'">'.$area_trabajo['area'].'</option>'; }
   echo '</datalist>';
 }
 
 if (isset($lista_impresoras)) {
   echo '<datalist id="impresoras">';
-  foreach ($lista_impresoras as $impresora) {
-    echo '<option value="'.$impresora['impresora'].'">'.$impresora['impresora'].'</option>';
-  }
+  foreach ($lista_impresoras as $impresora) { echo '<option value="'.$impresora['impresora'].'">'.$impresora['impresora'].'</option>'; }
   echo '</datalist>';
 }
 
 if (isset($lista_tipo_impresora)) {
   echo '<datalist id="tipo_impresora">';
-  foreach ($lista_tipo_impresora as $tipo) {
-    echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>';
-  }
+  foreach ($lista_tipo_impresora as $tipo) { echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>'; }
   echo '</datalist>';
 }
 
 if (isset($lista_especificaciones)) {
   echo '<datalist id="especificaciones">';
-  foreach ($lista_especificaciones as $especificaciones){
-    echo '<option value="'.$especificaciones['especificaciones'].'">'.$especificaciones['especificaciones'].'</option>';
-  }
+  foreach ($lista_especificaciones as $especificaciones){ echo '<option value="'.$especificaciones['especificaciones'].'">'.$especificaciones['especificaciones'].'</option>'; }
   echo '</datalist>';
 }
 
