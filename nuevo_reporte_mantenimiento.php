@@ -49,24 +49,29 @@ include_once 'menu.php';
                 <input list="lista_areas_trabajo" id="area_trabajo" type="text" name="area_trabajo" required>
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="unidad">Unidad:</label><br>
                 <input list="lista_unidades" id="unidad" type="text" name="unidad" required>
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="marca">Marca:</label><br>
                 <input list="lista_marcas" id="marca" type="text" name="marca" required>
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="modelo">Modelo:</label><br>
                 <input list="lista_modelos" id="modelo" type="text" name="modelo" required>
               </div>
 
-              <div class="col-3">
-                <label for="solicitante">Solicitante:</label><br>
+              <div class="col-6">
+                <label for="solicitante">Solicita:</label><br>
                 <input list="lista_solicitantes" id="solicitante" type="text" name="solicitante" required>
+              </div>
+
+              <div class="col-6">
+                <label for="recibe">Recibe:</label><br>
+                <input list="lista_recibe" id="recibe" type="text" name="recibe" required>
               </div>
 
               <div class="col-6">

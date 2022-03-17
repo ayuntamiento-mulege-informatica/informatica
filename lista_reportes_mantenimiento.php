@@ -45,10 +45,10 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Lista de reportes de mantenimiento</h2>
-          <p align="center"> <a href="/nuevo_reporte_mantenimiento">Abrir reporte de mantenimiento</a> </p>
+          <p align="center"> <a href="/nuevo_reporte_mantenimiento" title="Nuevo reporte de mantenimiento"> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
-        <div class="contenido-contenedor">
+        <div class="contenido-contenedor" style="overflow: auto;">
           <table width="100%" style="font-size: .8rem;">
             <tr>
               <th colspan="3">OPERACIONES</th>
@@ -60,6 +60,7 @@ include_once 'menu.php';
               <th>MARCA</th>
               <th>MODELO</th>
               <th>SOLICITANTE</th>
+              <th>RECIBE</th>
               <th>ACTIVIDAD</th>
               <th>OBSERVACIONES</th>
               <th>CONCLUSIONES</th>
@@ -81,6 +82,7 @@ include_once 'menu.php';
                   <td><?php echo $reporte['marca']; ?></td>
                   <td><?php echo $reporte['modelo']; ?></td>
                   <td><?php echo $reporte['solicitante']; ?></td>
+                  <td><?php echo $reporte['recibe']; ?></td>
                   <td><?php echo $reporte['actividad']; ?></td>
                   <td><?php echo $reporte['observaciones']; ?></td>
                   <td><?php echo $reporte['conclusiones']; ?></td>

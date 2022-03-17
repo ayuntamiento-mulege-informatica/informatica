@@ -48,24 +48,29 @@ include_once 'menu.php';
                 <input id="area_trabajo" type="text" name="area_trabajo" value="<?php echo $info_reporte['area_trabajo']; ?>">
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="unidad">Unidad:</label><br>
                 <input id="unidad" type="text" name="unidad" value="<?php echo $info_reporte['unidad']; ?>">
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="marca">Marca:</label><br>
                 <input id="marca" type="text" name="marca" value="<?php echo $info_reporte['marca']; ?>">
               </div>
 
-              <div class="col-3">
+              <div class="col-4">
                 <label for="modelo">Modelo:</label><br>
                 <input id="modelo" type="text" name="modelo" value="<?php echo $info_reporte['modelo']; ?>">
               </div>
 
-              <div class="col-3">
-                <label for="solicitante">Solicitante:</label><br>
+              <div class="col-6">
+                <label for="solicitante">Solicita:</label><br>
                 <input id="solicitante" type="text" name="solicitante" value="<?php echo $info_reporte['solicitante']; ?>">
+              </div>
+
+              <div class="col-6">
+                <label for="recibe">Recibe:</label><br>
+                <input id="recibe" type="text" name="recibe" value="<?php echo $info_reporte['recibe']; ?>">
               </div>
 
               <div class="col-6">
