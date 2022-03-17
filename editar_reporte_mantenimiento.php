@@ -83,7 +83,7 @@ include_once 'menu.php';
 
               <div class="col-6">
                 <label for="estado_final">Estado final:</label><br>
-                <textarea id="estado_final" name="estado_final" rows="8"></textarea>
+                <textarea id="estado_final" name="estado_final" rows="8"><?php echo $info_reporte['estado_final']; ?></textarea>
               </div>
 
               <div class="col-6">
