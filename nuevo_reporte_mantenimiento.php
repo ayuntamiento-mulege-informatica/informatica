@@ -7,6 +7,11 @@ $usuarios = new lista_usuarios;
 
 $reporte_reciente = $reportes -> reporteReciente($connect);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
+$lista_equipos = $reportes -> listaEquipos($connect);
+$lista_areas_trabajo = $reportes -> listaAreasTrabajo($connect);
+$lista_marcas = $reportes -> listaMarcas($connect);
+$lista_modelos = $reportes -> listaModelos($connect);
+$lista_solicitantes = $reportes -> listaSolicitantes($connect);
 
 if (isset($_SESSION['lista_reportes_mantenimiento'])) { unset($_SESSION['lista_reportes_mantenimiento']); }
 
@@ -41,27 +46,27 @@ include_once 'menu.php';
 
               <div class="col-4">
                 <label for="area_trabajo">Área de trabajo:</label><br>
-                <input id="area_trabajo" type="text" name="area_trabajo" required>
+                <input list="lista_areas_trabajo" id="area_trabajo" type="text" name="area_trabajo" required>
               </div>
 
               <div class="col-3">
                 <label for="unidad">Unidad:</label><br>
-                <input id="unidad" type="text" name="unidad" required>
+                <input list="lista_unidades" id="unidad" type="text" name="unidad" required>
               </div>
 
               <div class="col-3">
                 <label for="marca">Marca:</label><br>
-                <input id="marca" type="text" name="marca" required>
+                <input list="lista_marcas" id="marca" type="text" name="marca" required>
               </div>
 
               <div class="col-3">
                 <label for="modelo">Modelo:</label><br>
-                <input id="modelo" type="text" name="modelo" required>
+                <input list="lista_modelos" id="modelo" type="text" name="modelo" required>
               </div>
 
               <div class="col-3">
                 <label for="solicitante">Solicitante:</label><br>
-                <input id="solicitante" type="text" name="solicitante" required>
+                <input list="lista_solicitantes" id="solicitante" type="text" name="solicitante" required>
               </div>
 
               <div class="col-6">
@@ -113,4 +118,46 @@ include_once 'menu.php';
   </section>
 </main>
 
-<?php include_once 'footer.php'; ?>
+<?php
+if (isset($lista_areas_trabajo)) {
+  echo '<datalist id="lista_areas_trabajo">';
+  foreach ($lista_areas_trabajo as $area) {
+    echo '<option value="'.$area['area_trabajo'].'">'.$area['area_trabajo'].'</option>';
+  }
+  echo '</datalist>';
+}
+
+if (isset($lista_equipos)) {
+  echo '<datalist id="lista_unidades">';
+  foreach ($lista_equipos as $equipo) {
+    echo '<option value="'.$equipo['unidad'].'">'.$equipo['unidad'].'</option>';
+  }
+  echo '</datalist>';
+}
+
+if (isset($lista_marcas)) {
+  echo '<datalist id="lista_marcas">';
+  foreach ($lista_marcas as $marca) {
+    echo '<option value="'.$marca['marca'].'">'.$marca['marca'].'</option>';
+  }
+  echo '</datalist>';
+}
+
+if (isset($lista_modelos)) {
+  echo '<datalist id="lista_modelos">';
+  foreach ($lista_modelos as $modelo) {
+    echo '<option value="'.$modelo['modelo'].'">'.$modelo['modelo'].'</option>';
+  }
+  echo '</datalist>';
+}
+
+if (isset($lista_solicitantes)) {
+  echo '<datalist id="lista_solicitantes">';
+  foreach ($lista_solicitantes as $solicitante) {
+    echo '<option value="'.$solicitante['solicitante'].'">'.$solicitante['solicitante'].'</option>';
+  }
+  echo '</datalist>';
+}
+
+include_once 'footer.php';
+?>

@@ -134,6 +134,42 @@ class reportes_mantenimiento {
     if (isset($area_trabajo)) { return $area_trabajo; }
     else { return null; }
   }
+
+  // Función para lista de marcas.
+  function listaMarcas($connect){
+    $sql = "SELECT marca FROM bitacora_mantenimiento GROUP BY marca";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $marca[] = array('marca' => $row['marca']);
+    }
+
+    if (isset($marca)) { return $marca; }
+    else { return null; }
+  }
+
+  // Función para lista de modelos.
+  function listaModelos($connect){
+    $sql = "SELECT modelo FROM bitacora_mantenimiento GROUP BY modelo";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $modelo[] = array('modelo' => $row['modelo']);
+    }
+
+    if (isset($modelo)) { return $modelo; }
+    else { return null; }
+  }
+
+  // Función para lista de solicitantes.
+  function listaSolicitantes($connect){
+    $sql = "SELECT solicitante FROM bitacora_mantenimiento GROUP BY solicitante";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $solicitante[] = array('solicitante' => $row['solicitante']);
+    }
+
+    if (isset($solicitante)) { return $solicitante; }
+    else { return null; }
+  }
 }
 
 ?>
