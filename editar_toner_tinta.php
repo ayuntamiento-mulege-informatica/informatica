@@ -2,7 +2,7 @@
 require_once 'lib/class_entrega_toner_tinta.php';
 require_once 'lib/class_lista_usuarios.php';
 
-$entrega_toner_tinta = new entraga_toner_tinta;
+$entrega_toner_tinta = new entrega_toner_tinta;
 $usuarios = new lista_usuarios;
 
 $info_reporte = $entrega_toner_tinta -> infoReporte($connect, $parametro_2);
@@ -20,79 +20,65 @@ include_once 'menu.php';
           <h2>Nuevo reporte de mantenimiento</h2>
         </div>
         <div class="contenido-contenedor">
-          <form class="container-fluid" action="/lib/procesar_info_reporte_mantenimiento.php" method="post">
+          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_actualizacion_entrega_toner_tinta.php" method="post">
             <div class="row justify-content-center">
-              <div class="col-2">
-                <label for="reporte">No. de reporte:</label><br>
-                <input id="reporte" type="text" name="reporte" value="<?php echo $info_reporte['reporte']; ?>">
+              <div class="col-1">
+                <label for="id">ID:</label><br>
+                <input id="id" type="text" name="id" value="<?php echo $info_reporte['id']; ?>" required>
               </div>
 
               <div class="col-3">
-                <label for="fecha_ingreso">Fecha de ingreso:</label><br>
-                <input id="fecha_ingreso" type="date" name="fecha_ingreso" value="<?php echo $info_reporte['fecha_ingreso']; ?>">
-              </div>
-
-              <div class="col-3">
-                <label for="fecha_salida">Fecha de salida:</label><br>
-                <input id="fecha_salida" type="date" name="fecha_salida" value="<?php echo $info_reporte['fecha_salida']; ?>">
+                <label for="fecha_cambio">Fecha de cambio:</label><br>
+                <input id="fecha_cambio" type="date" name="fecha_cambio" value="<?php echo $info_reporte['fecha_cambio']; ?>" required>
               </div>
 
               <div class="col-4">
-                <label for="area_trabajo">Área de trabajo:</label><br>
-                <input id="area_trabajo" type="text" name="area_trabajo" value="<?php echo $info_reporte['area_trabajo']; ?>">
+                <label for="area">Área:</label><br>
+                <input id="area" type="text" name="area" value="<?php echo $info_reporte['area']; ?>" required>
               </div>
 
-              <div class="col-3">
-                <label for="unidad">Unidad:</label><br>
-                <input id="unidad" type="text" name="unidad" value="<?php echo $info_reporte['unidad']; ?>">
+              <div class="col-4">
+                <label for="impresora">Impresora:</label><br>
+                <input id="impresora" type="text" name="impresora" value="<?php echo $info_reporte['impresora']; ?>" required>
               </div>
 
-              <div class="col-3">
-                <label for="marca">Marca:</label><br>
-                <input id="marca" type="text" name="marca" value="<?php echo $info_reporte['marca']; ?>">
+              <div class="col-2">
+                <label for="tipo">Tipo :</label><br>
+                <input id="tipo" type="text" name="tipo" value="<?php echo $info_reporte['tipo']; ?>" title="Toner, tanque, cartucho." required>
               </div>
 
-              <div class="col-3">
-                <label for="modelo">Modelo:</label><br>
-                <input id="modelo" type="text" name="modelo" value="<?php echo $info_reporte['modelo']; ?>">
+              <div class="col-2">
+                <label for="especificaciones">Modelo:</label><br>
+                <input id="especificaciones" type="text" name="especificaciones" value="<?php echo $info_reporte['especificaciones']; ?>" title="Toner, tanque, cartucho." required>
               </div>
 
-              <div class="col-3">
-                <label for="solicitante">Solicitante:</label><br>
-                <input id="solicitante" type="text" name="solicitante" value="<?php echo $info_reporte['solicitante']; ?>">
-              </div>
-
-              <div class="col-6">
-                <label for="actividad">Actividad:</label><br>
-                <textarea id="actividad" name="actividad"><?php echo $info_reporte['actividad']; ?></textarea>
+              <div class="col-2">
+                <label for="cantidad">Cantidad:</label><br>
+                <input id="cantidad"  type="number" name="cantidad" value="<?php echo $info_reporte['cantidad']; ?>" min="0" required>
               </div>
 
               <div class="col-6">
-                <label for="observaciones">Observaciones:</label><br>
-                <textarea id="observaciones" name="observaciones"><?php echo $info_reporte['observaciones']; ?></textarea>
+                <label for="recibe">Nombre (Recibe):</label><br>
+                <input id="recibe" type="text" name="recibe" value="<?php echo $info_reporte['recibe']; ?>" required>
               </div>
 
-              <div class="col-6">
-                <label for="conclusiones">Conclusiones:</label><br>
-                <textarea id="conclusiones" name="conclusiones"><?php echo $info_reporte['conclusiones']; ?></textarea>
+              <div class="col-4">
+                <label for="">Foto actual:</label><br>
+                <img src="/evidencia/thumbnail_<?php echo $info_reporte['evidencia']; ?>" alt="">
               </div>
 
-              <div class="col-6">
-                <label for="responsable">Responsable:</label><br>
-                <select name="responsable" required>
-                  <!-- <option value=""></option> -->
-                  <?php if (isset($lista_usuarios)): ?>
-                    <?php foreach ($lista_usuarios as $usr): ?>
-                      <?php if ($usr['nombre'] == $info_reporte['responsable']): ?>
-                        <option value="<?php echo $usr['nombre']; ?>" selected><?php echo $usr['nombre']; ?></option>
-                        <?php else: ?>
-                          <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
-                      <?php endif; ?>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
-                </select>
+              <div class="col-4">
+                <label for="">Foto nueva:</label><br>
+                <input type="file" name="evidencia" id="evidencia" onchange="return fileValidation('evidencia')">
               </div>
 
+              <div class="col-4">
+                <label for="">Vista previa:</label><br>
+                <output id="list1" style="width: 100%;"></output>
+              </div>
+            </div>
+
+            <div class="row justify-content-center">
               <div class="col-2 centrar-botones">
                 <input type="submit" name="accion" value="Actualizar">
               </div>
@@ -103,6 +89,8 @@ include_once 'menu.php';
     </div>
   </section>
 </main>
+
+<script src="/js/previsualizar_imagen.js"></script>
 
 <?php
 if (isset($_SESSION['msg'])) {

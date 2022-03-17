@@ -16,7 +16,8 @@ class entrega_toner_tinta {
         'tipo' => $row['tipo'],
         'especificaciones' => $row['especificaciones'],
         'cantidad' => $row['cantidad'],
-        'recibe' => $row['recibe']
+        'recibe' => $row['recibe'],
+        'evidencia' => $row['evidencia']
       );
     }
 
@@ -38,7 +39,8 @@ class entrega_toner_tinta {
         'tipo' => $row['tipo'],
         'especificaciones' => $row['especificaciones'],
         'cantidad' => $row['cantidad'],
-        'recibe' => $row['recibe']
+        'recibe' => $row['recibe'],
+        'evidencia' => $row['evidencia']
       );
     }
 
@@ -46,6 +48,23 @@ class entrega_toner_tinta {
     else { return null; }
   }
 
+  function infoReporte($connect, $id){
+    $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE id = $id";
+    $query = mysqli_query($connect, $sql);
+    $row = mysqli_fetch_array($query);
+
+    return array(
+      'id' => $row['id'],
+      'fecha_cambio' => $row['fecha_cambio'],
+      'area' => $row['area'],
+      'impresora' => $row['impresora'],
+      'tipo' => $row['tipo'],
+      'especificaciones' => $row['especificaciones'],
+      'cantidad' => $row['cantidad'],
+      'recibe' => $row['recibe'],
+      'evidencia' => $row['evidencia']
+    );
+  }
 
   // Función para obtener registros de entrega de toner o tinta más reciente.
   function registroRecienteTonerTinta($connect) {
@@ -57,12 +76,46 @@ class entrega_toner_tinta {
   }
 
   // Función para registrar nueva entrega de toner o tinta.
-  function nuevaEntregaTonerTinta($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe) {
-    $sql = "INSERT INTO bitacora_entrega_tinta_toner (id, fecha_cambio, area, impresora, tipo, especificaciones, cantidad, recibe) VALUES ($id, '$fecha_cambio', '$area', '$impresora', '$tipo', '$especificaciones', '$cantidad', '$recibe')";
+  function nuevaEntregaTonerTinta($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
+    if (isset($evidencia)) {
+      $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
+    }
+
+    $sql = "INSERT INTO bitacora_entrega_tinta_toner (id, fecha_cambio, area, impresora, tipo, especificaciones, cantidad, recibe, evidencia) VALUES ($id, '$fecha_cambio', '$area', '$impresora', '$tipo', '$especificaciones', '$cantidad', '$recibe', '$ruta_evidencia')";
 
     mysqli_query($connect, $sql) or die($connect -> error.' No se ha podido realizar el registro.');
 
     return 'El registro se ha realizado correctamente.';
+  }
+
+  // Función para registrar nueva entrega de toner o tinta.
+  function actualizarEntregaTonerTinta($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
+    if (isset($evidencia)) {
+      $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
+
+      $sql = "UPDATE bitacora_entrega_tinta_toner SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe', evidencia = '$ruta_evidencia' WHERE id = $id";
+    }
+    else {
+      $sql = "UPDATE bitacora_entrega_tinta_toner SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe' WHERE id = $id";
+    }
+
+    mysqli_query($connect, $sql) or die($connect -> error.' No se ha podido actualizar el registro '.$id.'.');
+
+    return 'El registro '.$id.' se ha actualizado correctamente.';
+  }
+
+  // Procesamiento de evidencia.
+  private function procesarEvidencia($evidencia, $id) {
+    $directorio = '../evidencia/'.$id.'.jpg';
+    $thumbnail = '../evidencia/thumbnail_'.$id.'.jpg';
+    if(move_uploaded_file($evidencia, $directorio)){
+      passthru("convert -thumbnail 256x256 -background white -alpha remove -alpha off -quality 80 $directorio $thumbnail");
+
+      return $id.'.jpg';
+    }
+    else {
+      echo 'No fue posible subir la imagen.';
+    }
   }
 
   // Lista de impresoras.

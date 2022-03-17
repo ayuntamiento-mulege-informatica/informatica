@@ -20,7 +20,7 @@ include_once 'menu.php';
           <h2>Nuevo registro de entrega de toner o tinta</h2>
         </div>
         <div class="contenido-contenedor">
-          <form class="container-fluid" action="/lib/procesar_entrega_toner_tinta.php" method="post">
+          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_entrega_toner_tinta.php" method="post">
             <div class="row justify-content-center">
               <div class="col-1">
                 <label for="id">ID:</label><br>
@@ -61,6 +61,16 @@ include_once 'menu.php';
                 <label for="recibe">Nombre (Recibe):</label><br>
                 <input id="recibe" type="text" name="recibe" required>
               </div>
+
+              <div class="col-6">
+                <label for="">Foto:</label><br>
+                <input type="file" name="evidencia" id="evidencia" onchange="return fileValidation('evidencia')">
+              </div>
+
+              <div class="col-xl-6">
+                <label for="">Vista previa:</label><br>
+                <output id="list1" style="width: 100%;"></output>
+              </div>
             </div>
 
             <div class="row justify-content-center">
@@ -74,5 +84,5 @@ include_once 'menu.php';
     </div>
   </section>
 </main>
-
+<script src="/js/previsualizar_imagen.js"></script>
 <?php include_once 'footer.php'; ?>

@@ -44,6 +44,7 @@ include_once 'menu.php';
               <th>ESPECIFICACIONES</th>
               <th>CANTIDAD</th>
               <th>NOMBRE (RECIBE)</th>
+              <th>EVIDENCIA</th>
             </tr>
 
             <?php if (isset($lista_entrega)): ?>
@@ -58,6 +59,7 @@ include_once 'menu.php';
                   <td><?php echo $entrega['especificaciones']; ?></td>
                   <td><?php echo $entrega['cantidad']; ?></td>
                   <td><?php echo $entrega['recibe']; ?></td>
+                  <td> <a href="/evidencia/<?php echo $entrega['evidencia']; ?>" target="_blank"> <img src="/evidencia/thumbnail_<?php echo $entrega['evidencia']; ?>" alt="<?php echo $entrega['evidencia']; ?>"> </a> </td>
                 </tr>
               <?php endforeach; ?>
             <?php else: ?>
