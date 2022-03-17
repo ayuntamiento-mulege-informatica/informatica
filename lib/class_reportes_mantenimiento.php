@@ -4,8 +4,8 @@
  */
 class reportes_mantenimiento {
   // Función para registrar reportes de mantenimiento.
-  function registrarReporteMantenimiento($connect, $reporte, $fecha_ingreso, $fecha_salida, $area_trabajo, $unidad, $marca, $modelo, $solicitante, $actividad, $observaciones, $conclusiones, $responsable) {
-    $sql = "INSERT INTO bitacora_mantenimiento (reporte, fecha_ingreso, fecha_salida, area_trabajo, unidad, marca, modelo, solicitante, actividad, observaciones, conclusiones, responsable) VALUES ($reporte, '$fecha_ingreso', '$fecha_salida', '$area_trabajo', '$unidad', '$marca', '$modelo', '$solicitante', '$actividad', '$observaciones', '$conclusiones', '$responsable')";
+  function registrarReporteMantenimiento($connect, $reporte, $fecha_ingreso, $fecha_salida, $area_trabajo, $unidad, $marca, $modelo, $solicitante, $actividad, $observaciones, $conclusiones, $estado_final, $responsable) {
+    $sql = "INSERT INTO bitacora_mantenimiento (reporte, fecha_ingreso, fecha_salida, area_trabajo, unidad, marca, modelo, solicitante, actividad, observaciones, conclusiones, estado_final, responsable) VALUES ($reporte, '$fecha_ingreso', '$fecha_salida', '$area_trabajo', '$unidad', '$marca', '$modelo', '$solicitante', '$actividad', '$observaciones', '$conclusiones', '$estado_final', '$responsable')";
 
     mysqli_query($connect, $sql) or die ($connect -> error.' El reporte no ha podido ser almacenado.');
 
@@ -13,8 +13,8 @@ class reportes_mantenimiento {
   }
 
   // Función para actualizar información en un reporte de mantenimiento.
-  function actualizarReporteMantenimiento($connect, $reporte, $fecha_ingreso, $fecha_salida, $area_trabajo, $unidad, $marca, $modelo, $solicitante, $actividad, $observaciones, $conclusiones, $responsable) {
-    $sql = "UPDATE bitacora_mantenimiento SET fecha_ingreso = '$fecha_ingreso', fecha_salida = '$fecha_salida', area_trabajo = '$area_trabajo', unidad = '$unidad', marca = '$marca', modelo = '$modelo', solicitante = '$solicitante', actividad = '$actividad', observaciones = '$observaciones', conclusiones = '$conclusiones', responsable = '$responsable' WHERE reporte = $reporte";
+  function actualizarReporteMantenimiento($connect, $reporte, $fecha_ingreso, $fecha_salida, $area_trabajo, $unidad, $marca, $modelo, $solicitante, $actividad, $observaciones, $conclusiones, $estado_final, $responsable) {
+    $sql = "UPDATE bitacora_mantenimiento SET fecha_ingreso = '$fecha_ingreso', fecha_salida = '$fecha_salida', area_trabajo = '$area_trabajo', unidad = '$unidad', marca = '$marca', modelo = '$modelo', solicitante = '$solicitante', actividad = '$actividad', observaciones = '$observaciones', conclusiones = '$conclusiones', estado_final = '$estado_final', responsable = '$responsable' WHERE reporte = $reporte";
 
     mysqli_query($connect, $sql) or die ($connect -> error.' No ha sido posible actualizar el reporte.');
 
@@ -47,6 +47,7 @@ class reportes_mantenimiento {
         'actividad' => $row['actividad'],
         'observaciones' => $row['observaciones'],
         'conclusiones' => $row['conclusiones'],
+        'estado_final' => $row['estado_final'],
         'responsable' => $row['responsable']
       );
     }
@@ -78,6 +79,7 @@ class reportes_mantenimiento {
         'actividad' => $row['actividad'],
         'observaciones' => $row['observaciones'],
         'conclusiones' => $row['conclusiones'],
+        'estado_final' => $row['estado_final'],
         'responsable' => $row['responsable']
       );
     }
@@ -104,6 +106,7 @@ class reportes_mantenimiento {
       'actividad' => $row['actividad'],
       'observaciones' => $row['observaciones'],
       'conclusiones' => $row['conclusiones'],
+      'estado_final' => $row['estado_final'],
       'responsable' => $row['responsable']
     );
   }
