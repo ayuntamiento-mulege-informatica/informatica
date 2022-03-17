@@ -18,12 +18,12 @@
               echo '<li><a class="enlace-boton" href="/lista_reportes_mantenimiento">Lista de reportes</a></li>';
               break;
 
-            case '/nuevo_registro_toner_tinta':
             case '/lista_entrega_toner_tinta':
             case '/lista_entrega_toner_tinta/'.$parametro_2:
               echo '<li><a class="enlace-boton" href="/entrega_toner_tinta">Bitácora de entrega de toner y tinta</a></li>';
               break;
 
+            case '/nuevo_registro_toner_tinta':
             case '/editar_toner_tinta/'.$parametro_2:
               echo '<li><a class="enlace-boton" href="/entrega_toner_tinta">Bitácora de entrega de toner y tinta</a></li>';
               echo '<li><a class="enlace-boton" href="/lista_entrega_toner_tinta">Lista de entrega de toner y tinta</a></li>';
