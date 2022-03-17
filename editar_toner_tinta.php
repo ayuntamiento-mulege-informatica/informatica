@@ -21,8 +21,9 @@ include_once 'menu.php';
         <div class="titulo-contenedor">
           <h2>Nuevo reporte de mantenimiento</h2>
 
-          <p align="center"> <a href="/nuevo_registro_toner_tinta">Crear nuevo registro de toner y tinta</a> </p>
+          <p align="center"> <a href="/nuevo_registro_toner_tinta" title="Crear nuevo registro de toner y tinta"> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
+
         <div class="contenido-contenedor">
           <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_actualizacion_entrega_toner_tinta.php" method="post">
             <div class="row justify-content-center">
