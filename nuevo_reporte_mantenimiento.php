@@ -66,17 +66,22 @@ include_once 'menu.php';
 
               <div class="col-6">
                 <label for="actividad">Actividad:</label><br>
-                <textarea id="actividad" name="actividad" required></textarea>
+                <textarea id="actividad" name="actividad" rows="8" required></textarea>
               </div>
 
               <div class="col-6">
                 <label for="observaciones">Observaciones:</label><br>
-                <textarea id="observaciones" name="observaciones" required></textarea>
+                <textarea id="observaciones" name="observaciones" rows="8" required></textarea>
               </div>
 
               <div class="col-6">
                 <label for="conclusiones">Conclusiones:</label><br>
-                <textarea id="conclusiones" name="conclusiones"></textarea>
+                <textarea id="conclusiones" name="conclusiones" rows="8"></textarea>
+              </div>
+
+              <div class="col-6">
+                <label for="estado_final">Estado final:</label><br>
+                <textarea id="estado_final" name="estado_final" rows="8"></textarea>
               </div>
 
               <div class="col-6">
@@ -87,14 +92,16 @@ include_once 'menu.php';
                     <?php foreach ($lista_usuarios as $usr): ?>
                       <?php if ($usr['nombre'] == $_SESSION['nombre_usuario']): ?>
                         <option value="<?php echo $usr['nombre']; ?>" selected><?php echo $usr['nombre']; ?></option>
-                        <?php else: ?>
-                          <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
+                      <?php else: ?>
+                        <option value="<?php echo $usr['nombre']; ?>"><?php echo $usr['nombre']; ?></option>
                       <?php endif; ?>
                     <?php endforeach; ?>
                   <?php endif; ?>
                 </select>
               </div>
+            </div>
 
+            <div class="row justify-content-center">
               <div class="col-2 centrar-botones">
                 <input type="submit" name="accion" value="Registrar">
               </div>
