@@ -63,6 +63,7 @@ include_once 'menu.php';
               <th>ACTIVIDAD</th>
               <th>OBSERVACIONES</th>
               <th>CONCLUSIONES</th>
+              <th>ESTADO FINAL</th>
               <th>RESPONSABLE</th>
             </tr>
 
@@ -83,6 +84,7 @@ include_once 'menu.php';
                   <td><?php echo $reporte['actividad']; ?></td>
                   <td><?php echo $reporte['observaciones']; ?></td>
                   <td><?php echo $reporte['conclusiones']; ?></td>
+                  <td><?php echo $reporte['estado_final']; ?></td>
                   <td><?php echo $reporte['responsable']; ?></td>
                 </tr>
               <?php endforeach; ?>
