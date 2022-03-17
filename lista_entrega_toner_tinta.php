@@ -30,6 +30,7 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Lista de entrega de toner y tinta</h2>
+          <p align="center"> <a href="/nuevo_registro_toner_tinta">Crear nuevo registro de toner y tinta</a> </p>
         </div>
 
         <div class="contenido-contenedor">

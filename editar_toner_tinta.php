@@ -18,6 +18,8 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Nuevo reporte de mantenimiento</h2>
+
+          <p align="center"> <a href="/nuevo_registro_toner_tinta">Crear nuevo registro de toner y tinta</a> </p>
         </div>
         <div class="contenido-contenedor">
           <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_actualizacion_entrega_toner_tinta.php" method="post">
