@@ -38,7 +38,7 @@ body {
   margin: 0 auto;
   padding: 1cm;
   background-color: #fff;
-  background: url('/img/hoja_de_servicio.png') no-repeat center / cover;
+  background: url('/img/hoja_de_servicio.png') no-repeat center / cover !important;
 }
 
 .pagina-contenido {
