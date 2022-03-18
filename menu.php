@@ -28,6 +28,17 @@
               echo '<li><a class="enlace-boton" href="/entrega_toner_tinta">Bitácora de entrega de toner y tinta</a></li>';
               echo '<li><a class="enlace-boton" href="/lista_entrega_toner_tinta">Lista de entrega de toner y tinta</a></li>';
               break;
+
+            case '/lista_impresoras':
+            case '/lista_impresoras/'.$parametro_2:
+              echo '<li><a class="enlace-boton" href="/inventario_impresoras">Inventario de impresoras</a></li>';
+              break;
+
+            case '/agregar_impresora':
+            case '/editar_impresora/'.$parametro_2:
+              echo '<li><a class="enlace-boton" href="/inventario_impresoras">Inventario de impresoras</a></li>';
+              echo '<li><a class="enlace-boton" href="/lista_impresoras">Lista de impresoras</a></li>';
+              break;
           }
           ?>
 

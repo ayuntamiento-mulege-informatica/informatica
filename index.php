@@ -106,6 +106,24 @@ switch ($area) {
         include_once 'lista_entrega_toner_tinta.php';
         break;
 
+      // INVENTARIO DE IMPRESORAS
+      case '/inventario_impresoras':
+        include_once 'inventario_impresoras.php';
+        break;
+
+      case '/agregar_impresora':
+        include_once 'agregar_impresora.php';
+        break;
+
+      case '/editar_impresora/'.$parametro_2:
+        include_once 'editar_impresora.php';
+        break;
+
+      case '/lista_impresoras':
+      case '/lista_impresoras/'.$parametro_2:
+        include_once 'lista_impresoras.php';
+        break;
+
       // GESTIÓN DE TICKETS
 
       case '/revisar_tickets':

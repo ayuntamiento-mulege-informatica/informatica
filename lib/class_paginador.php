@@ -73,5 +73,13 @@ class pages{
 		$row = mysqli_fetch_array($query);
 		return $row['contar'];
 	}
+
+	/* Función para obtener los registros totales del inventario de impresoras de acuerdo a lo solicitado en el formulario de búsqueda. */
+	public function registrosTotaleslistaImpresoras($connect, $area, $marca, $modelo, $tipo, $modelo_tinta_toner){
+		$sql = "SELECT COUNT(*) AS contar FROM impresoras WHERE area LIKE '%$area%' AND marca LIKE '%$marca%' AND modelo LIKE '%$modelo%' AND tipo LIKE '%$tipo%' AND modelo_tinta_toner LIKE '%$modelo_tinta_toner%'";
+		$query = mysqli_query($connect, $sql);
+		$row = mysqli_fetch_array($query);
+		return $row['contar'];
+	}
 }
 ?>
