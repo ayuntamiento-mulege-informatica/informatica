@@ -41,63 +41,63 @@ else {
             <div style="width: 100%; height: .7cm;"> </div>
 
             <!-- INFORMACIÓN DEL EQUIPO -->
-            <div style="display: flex; height: 2.5cm;">
+            <div style="display: flex; height: 1.4cm;">
               <!-- ÁREA DE TRABAJO -->
-              <div style="width: 25%; height: 2.5cm;">
-                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['area_trabajo']; ?></div>
+              <div style="width: 25%;">
+                <div style="padding-top: .5cm; text-align: center;"><?php echo $info_reporte['area_trabajo']; ?></div>
               </div>
 
               <!-- UNIDAD -->
-              <div style="width: 25%; height: 2.5cm;">
-                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['unidad']; ?></div>
+              <div style="width: 25%;">
+                <div style="padding-top: .5cm; text-align: center;"><?php echo $info_reporte['unidad']; ?></div>
               </div>
 
               <!-- MARCA -->
-              <div style="width: 25%; height: 2.5cm;">
-                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['marca']; ?></div>
+              <div style="width: 25%;">
+                <div style="padding-top: .5cm; text-align: center;"><?php echo $info_reporte['marca']; ?></div>
               </div>
 
               <!-- MODELO -->
-              <div style="width: 25%; height: 2.5cm;">
-                <div style="padding-top: .7cm; text-align: center;"><?php echo $info_reporte['modelo']; ?></div>
+              <div style="width: 25%;">
+                <div style="padding-top: .5cm; text-align: center;"><?php echo $info_reporte['modelo']; ?></div>
               </div>
             </div>
 
             <!-- INFORMACIÓN DEL SOLICITANTE Y DE QUIEN RECIBE. -->
-            <div style="display: flex; height: 2cm;">
+            <div style="display: flex; height: 1.4cm;">
               <!-- SOLICITA -->
-              <div style="width: 50%; height: 2cm;">
-                <div style="width: 100%; height: 2cm; padding: .7cm .1cm 0 .1cm;">
+              <div style="width: 50%; height: 1.4cm;">
+                <div style="width: 100%; height: 1.4cm; padding: .5cm .1cm 0 .1cm;">
                   <?php echo $info_reporte['solicitante']; ?>
                 </div>
               </div>
 
               <!-- RECIBE -->
-              <div style="width: 50%; height: 2cm;">
-                <div style="width: 100%; height: 2cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['recibe']; ?></div>
+              <div style="width: 50%; height: 1.4cm;">
+                <div style="width: 100%; height: 1.4cm; padding: .5cm .1cm 0 .1cm;"><?php echo $info_reporte['recibe']; ?></div>
               </div>
             </div>
 
             <!-- INFORMACIÓN DE ACTIVIDAD -->
-            <div style="display: flex; height: 3cm;">
+            <div style="display: flex; height: 4.3cm;">
               <!-- ACTIVIDAD -->
-              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['actividad']; ?></div>
+              <div style="width: 50%; height: 4.3cm; padding: .5cm .1cm 0 .1cm;"><?php echo $info_reporte['actividad']; ?></div>
 
               <!-- OBSERVACIONES -->
-              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['observaciones']; ?></div>
+              <div style="width: 50%; height: 4.3cm; padding: .5cm .1cm 0 .1cm;"><?php echo $info_reporte['observaciones']; ?></div>
             </div>
 
             <!-- CONCLUSIONES Y ESTADO FINAL -->
-            <div style="display: flex; height:">
+            <div style="display: flex; height: 4.3cm;">
               <!-- CONCLUSIONES -->
-              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['conclusiones']; ?></div>
+              <div style="width: 50%; height: 4.3cm; padding: .5cm .1cm 0 .1cm;"><?php echo $info_reporte['conclusiones']; ?></div>
 
               <!-- ESTADO FINAL -->
-              <div style="width: 50%; height: 3cm; padding: .7cm .1cm 0 .1cm;"><?php echo $info_reporte['estado_final']; ?></div>
+              <div style="width: 50%; height: 4.3cm; padding: .5cm .1cm 0 .1cm;"><?php echo $info_reporte['estado_final']; ?></div>
             </div>
 
             <!-- ESPACIO VACÍO -->
-            <div style="width: 100%; height: 3cm; float: left;"> </div>
+            <div style="width: 100%; height: 2.5cm; float: left;"> </div>
 
             <!-- FIRMA DEL RESPONSABLE -->
               <div style="width: 100%; height: .6cm; float: left; text-align: center;"><?php echo $info_reporte['responsable']; ?></div>
