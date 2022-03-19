@@ -1,14 +1,14 @@
 <?php
-require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_inventario_impresoras.php';
 require_once 'lib/class_areas_trabajo.php';
 
-$entrega_toner_tinta = new entrega_toner_tinta;
+$inventario_impresoras = new inventario_impresoras;
 $areas_trabajo = new areas_trabajo;
 
-$lista_toner_tinta = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
-$lista_impresoras = $entrega_toner_tinta -> listaImpresoras($connect);
-$lista_tipo_impresora = $entrega_toner_tinta -> listaTipoImpresora($connect);
-$lista_especificaciones = $entrega_toner_tinta -> listaEspecificaciones($connect);
+$lista_impresoras_marcas = $inventario_impresoras -> listaImpresorasMarcas($connect);
+$lista_impresoras_tipo = $inventario_impresoras -> listaImpresorasTipo($connect);
+$lista_impresoras_modelo = $inventario_impresoras -> listaImpresorasModelo($connect);
+$lista_impresoras_tinta = $inventario_impresoras -> listaImpresorasTinta($connect);
 $lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
 if (isset($_SESSION['lista_impresoras'])) { unset($_SESSION['lista_impresoras']); }
@@ -45,22 +45,22 @@ include_once 'menu.php';
 
                     <div class="col-6">
                       <label for="">Marca:</label><br>
-                      <input list="marca" type="text" name="marca">
+                      <input list="impresoras_marcas" type="text" name="marca">
                     </div>
 
                     <div class="col-6">
                       <label for="">Modelo:</label><br>
-                      <input list="modelo" type="text" name="modelo">
+                      <input list="lista_modelo" type="text" name="modelo">
                     </div>
 
                     <div class="col-6">
                       <label for="">Tipo:</label><br>
-                      <input list="tipo" type="text" name="tipo">
+                      <input list="tipo_impresora" type="text" name="tipo">
                     </div>
 
                     <div class="col-12">
                       <label for="">Modelo de tinta o toner:</label><br>
-                      <input list="modelo_tinta_toner" type="text" name="modelo_tinta_toner">
+                      <input list="lista_modelo_tinta" type="text" name="modelo_tinta_toner">
                     </div>
                   </div>
 
@@ -94,21 +94,27 @@ if (isset($lista_areas_trabajo)){
   echo '</datalist>';
 }
 
-if (isset($lista_impresoras)) {
-  echo '<datalist id="impresoras">';
-  foreach ($lista_impresoras as $impresora) { echo '<option value="'.$impresora['impresora'].'">'.$impresora['impresora'].'</option>'; }
+if (isset($lista_impresoras_marcas)) {
+  echo '<datalist id="impresoras_marcas">';
+  foreach ($lista_impresoras_marcas as $marca) { echo '<option value="'.$marca['marca'].'">'.$marca['marca'].'</option>'; }
   echo '</datalist>';
 }
 
-if (isset($lista_tipo_impresora)) {
+if (isset($lista_impresoras_tipo)) {
   echo '<datalist id="tipo_impresora">';
-  foreach ($lista_tipo_impresora as $tipo) { echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>'; }
+  foreach ($lista_impresoras_tipo as $tipo) { echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>'; }
   echo '</datalist>';
 }
 
-if (isset($lista_especificaciones)) {
-  echo '<datalist id="especificaciones">';
-  foreach ($lista_especificaciones as $especificaciones){ echo '<option value="'.$especificaciones['especificaciones'].'">'.$especificaciones['especificaciones'].'</option>'; }
+if (isset($lista_impresoras_modelo)) {
+  echo '<datalist id="lista_modelo">';
+  foreach ($lista_impresoras_modelo as $modelo){ echo '<option value="'.$modelo['modelo'].'">'.$modelo['modelo'].'</option>'; }
+  echo '</datalist>';
+}
+
+if (isset($lista_impresoras_tinta)) {
+  echo '<datalist id="lista_modelo_tinta">';
+  foreach ($lista_impresoras_tinta as $tinta){ echo '<option value="'.$tinta['modelo_tinta_toner'].'">'.$tinta['modelo_tinta_toner'].'</option>'; }
   echo '</datalist>';
 }
 

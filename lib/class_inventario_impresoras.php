@@ -3,7 +3,7 @@
 *
 */
 class inventario_impresoras {
-  // Función para listar todas las impresoras del inventario.
+  // Función para listar todas las impresoras del inventario con paginación.
   function listaImpresoras($connect, $pag, $noReg) {
     $sql = "SELECT * FROM impresoras ORDER BY area ASC LIMIT ".($pag-1)*$noReg.",$noReg";
     $query = mysqli_query($connect, $sql);
@@ -86,6 +86,54 @@ class inventario_impresoras {
     );
 
     if (isset($impresora)) { return $impresora; }
+    else { return null; }
+  }
+
+  // Función para listar marcas de impresoras.
+  function listaImpresorasMarcas($connect) {
+    $sql = "SELECT marca FROM impresoras GROUP BY marca";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $marcas[] = array( 'marca' => $row['marca'] );
+    }
+
+    if (isset($marcas)) { return $marcas; }
+    else { return null; }
+  }
+
+  // Función para listar tipos de impresoras.
+  function listaImpresorasTipo($connect) {
+    $sql = "SELECT tipo FROM impresoras GROUP BY tipo";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $tipos[] = array( 'tipo' => $row['tipo'] );
+    }
+
+    if (isset($tipos)) { return $tipos; }
+    else { return null; }
+  }
+
+  // Función para listar modelos de impresoras.
+  function listaImpresorasModelo($connect) {
+    $sql = "SELECT modelo FROM impresoras GROUP BY modelo";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $modelos[] = array( 'modelo' => $row['modelo'] );
+    }
+
+    if (isset($modelos)) { return $modelos; }
+    else { return null; }
+  }
+
+  // Función para listar tinta o toner de impresoras.
+  function listaImpresorasTinta($connect) {
+    $sql = "SELECT modelo_tinta_toner FROM impresoras GROUP BY modelo_tinta_toner";
+    $query = mysqli_query($connect, $sql);
+    while ($row = mysqli_fetch_array($query)) {
+      $modelo_tinta_toner[] = array( 'modelo_tinta_toner' => $row['modelo_tinta_toner'] );
+    }
+
+    if (isset($modelo_tinta_toner)) { return $modelo_tinta_toner; }
     else { return null; }
   }
 }
