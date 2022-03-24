@@ -2,10 +2,10 @@
 /**
 *
 */
-class entrega_toner_tinta {
+class entrega_consumibles {
   // Listado de todas las entregas de toner y tinta.
-  function listaTonerTinta($connect, $pag, $noReg) {
-    $sql = "SELECT * FROM bitacora_entrega_tinta_toner ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+  function listaConsumibles($connect, $pag, $noReg) {
+    $sql = "SELECT * FROM bitacora_entrega_consumibles ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
       $tt[] = array(
@@ -26,8 +26,8 @@ class entrega_toner_tinta {
   }
 
   // Listado del resultado de la búsqueda de entregas de toner y tinta.
-  function listaTonerTintaBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg) {
-    $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' AND impresora LIKE '%$impresora%' AND tipo LIKE '%$tipo%' AND especificaciones LIKE '%$especificaciones%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+  function listaConsumiblesBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg) {
+    $sql = "SELECT * FROM bitacora_entrega_consumibles WHERE fecha_cambio LIKE '%$fecha_cambio%' AND area LIKE '%$area%' AND impresora LIKE '%$impresora%' AND tipo LIKE '%$tipo%' AND especificaciones LIKE '%$especificaciones%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
 
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
@@ -49,7 +49,7 @@ class entrega_toner_tinta {
   }
 
   function infoReporte($connect, $id){
-    $sql = "SELECT * FROM bitacora_entrega_tinta_toner WHERE id = $id";
+    $sql = "SELECT * FROM bitacora_entrega_consumibles WHERE id = $id";
     $query = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($query);
 
@@ -68,7 +68,7 @@ class entrega_toner_tinta {
 
   // Función para obtener registros de entrega de toner o tinta más reciente.
   function registroRecienteTonerTinta($connect) {
-    $sql = "SELECT MAX(id) AS maximo FROM bitacora_entrega_tinta_toner";
+    $sql = "SELECT MAX(id) AS maximo FROM bitacora_entrega_consumibles";
     $query = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($query);
 
@@ -81,7 +81,7 @@ class entrega_toner_tinta {
       $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
     }
 
-    $sql = "INSERT INTO bitacora_entrega_tinta_toner (id, fecha_cambio, area, impresora, tipo, especificaciones, cantidad, recibe, evidencia) VALUES ($id, '$fecha_cambio', '$area', '$impresora', '$tipo', '$especificaciones', '$cantidad', '$recibe', '$ruta_evidencia')";
+    $sql = "INSERT INTO bitacora_entrega_consumibles (id, fecha_cambio, area, impresora, tipo, especificaciones, cantidad, recibe, evidencia) VALUES ($id, '$fecha_cambio', '$area', '$impresora', '$tipo', '$especificaciones', '$cantidad', '$recibe', '$ruta_evidencia')";
 
     mysqli_query($connect, $sql) or die($connect -> error.' No se ha podido realizar el registro.');
 
@@ -93,10 +93,10 @@ class entrega_toner_tinta {
     if (isset($evidencia)) {
       $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
 
-      $sql = "UPDATE bitacora_entrega_tinta_toner SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe', evidencia = '$ruta_evidencia' WHERE id = $id";
+      $sql = "UPDATE bitacora_entrega_consumibles SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe', evidencia = '$ruta_evidencia' WHERE id = $id";
     }
     else {
-      $sql = "UPDATE bitacora_entrega_tinta_toner SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe' WHERE id = $id";
+      $sql = "UPDATE bitacora_entrega_consumibles SET fecha_cambio = '$fecha_cambio', area = '$area', impresora = '$impresora', tipo = '$tipo', especificaciones = '$especificaciones', cantidad = '$cantidad', recibe = '$recibe' WHERE id = $id";
     }
 
     mysqli_query($connect, $sql) or die($connect -> error.' No se ha podido actualizar el registro '.$id.'.');
@@ -124,7 +124,7 @@ class entrega_toner_tinta {
 
   // Lista de impresoras.
   function listaImpresoras($connect) {
-    $sql = "SELECT impresora FROM bitacora_entrega_tinta_toner GROUP BY impresora";
+    $sql = "SELECT impresora FROM bitacora_entrega_consumibles GROUP BY impresora";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
       $impresora[] = array( 'impresora' => $row['impresora'] );
@@ -136,7 +136,7 @@ class entrega_toner_tinta {
 
   // Lista de tipos de impresora.
   function listaTipoImpresora($connect) {
-    $sql = "SELECT tipo FROM bitacora_entrega_tinta_toner GROUP BY tipo";
+    $sql = "SELECT tipo FROM bitacora_entrega_consumibles GROUP BY tipo";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
       $tipo[] = array( 'tipo' => $row['tipo'] );
@@ -148,7 +148,7 @@ class entrega_toner_tinta {
 
   // Lista de especificaciones de tinta o toner.
   function listaEspecificaciones($connect) {
-    $sql = "SELECT especificaciones FROM bitacora_entrega_tinta_toner GROUP BY especificaciones";
+    $sql = "SELECT especificaciones FROM bitacora_entrega_consumibles GROUP BY especificaciones";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
       $especificaciones[] = array( 'especificaciones' => $row['especificaciones'] );
