@@ -67,7 +67,7 @@ class entrega_consumibles {
   }
 
   // Función para obtener registros de entrega de toner o tinta más reciente.
-  function registroRecienteTonerTinta($connect) {
+  function registroRecienteConsumibles($connect) {
     $sql = "SELECT MAX(id) AS maximo FROM bitacora_entrega_consumibles";
     $query = mysqli_query($connect, $sql);
     $row = mysqli_fetch_array($query);
@@ -76,7 +76,7 @@ class entrega_consumibles {
   }
 
   // Función para registrar nueva entrega de toner o tinta.
-  function nuevaEntregaTonerTinta($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
+  function nuevaEntregaConsumibles($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
     if (isset($evidencia)) {
       $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
     }
@@ -89,7 +89,7 @@ class entrega_consumibles {
   }
 
   // Función para registrar nueva entrega de toner o tinta.
-  function actualizarEntregaTonerTinta($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
+  function actualizarEntregaConsumibles($connect, $id, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $cantidad, $recibe, $evidencia) {
     if (isset($evidencia)) {
       $ruta_evidencia = $this -> procesarEvidencia($evidencia, $id);
 
