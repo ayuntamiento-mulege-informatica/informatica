@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url('../fonts/Poppins-Bold.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10pt;
+  padding: 0;
+}
+
+
+.pagina {
+  width: 27.94cm;
+  height: 21.59cm;
+  margin: 0 auto;
+  padding: 1cm;
+  background-color: #fff;
+  background: url('/img/hoja_consumibles.png') no-repeat center / cover !important;
+}
+
+.pagina-contenido {
+  height: 19.59cm;
+  width: 25.94cm;
+}
