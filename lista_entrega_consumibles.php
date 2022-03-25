@@ -56,7 +56,9 @@ include_once 'menu.php';
         <div class="contenido-contenedor">
           <table width="100%" style="font-size: .8rem;">
             <tr>
-              <th>OPERACIONES</th>
+              <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                <th colspan="2">OPERACIONES</th>
+              <?php endif; ?>
               <th>ID</th>
               <th>FECHA DE CAMBIO</th>
               <th>ÁREA</th>
@@ -71,7 +73,10 @@ include_once 'menu.php';
             <?php if (isset($lista_entrega)): ?>
               <?php foreach ($lista_entrega as $entrega): ?>
                 <tr>
-                  <td> <a href="/editar_consumibles/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                    <td> <a href="/editar_consumibles/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                    <td> <a href="/imprimir_consumibles/<?php echo $entrega['id']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
+                  <?php endif; ?>
                   <td><?php echo $entrega['id']; ?></td>
                   <td><?php echo $entrega['fecha_cambio']; ?></td>
                   <td><?php echo $entrega['area']; ?></td>

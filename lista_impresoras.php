@@ -1,8 +1,10 @@
 <?php
 require_once 'lib/class_inventario_impresoras.php';
+require_once 'lib/class_areas_trabajo.php';
 require_once 'lib/class_paginador.php';
 
 $inventario_impresoras = new inventario_impresoras;
+$areas_trabajo = new areas_trabajo;
 $paginador = new pages;
 
 if (isset($parametro_2)) { $pag = $parametro_2; }
@@ -25,13 +27,13 @@ if (isset($_POST['accion']) || isset($_SESSION['lista_impresoras'])) {
   elseif (isset($_SESSION['lista_impresoras']['tipo'])) { $tipo = $_SESSION['lista_impresoras']['tipo']; }
   else { $tipo = null; }
 
-  if(isset($_POST['modelo_tinta_toner'])) { $modelo_tinta_toner = $_SESSION['lista_impresoras']['modelo_tinta_toner'] = $_POST['modelo_tinta_toner']; }
-  elseif (isset($_SESSION['lista_impresoras']['modelo_tinta_toner'])) { $modelo_tinta_toner = $_SESSION['lista_impresoras']['modelo_tinta_toner']; }
-  else { $modelo_tinta_toner = null; }
+  if(isset($_POST['consumible'])) { $consumible = $_SESSION['lista_impresoras']['consumible'] = $_POST['consumible']; }
+  elseif (isset($_SESSION['lista_impresoras']['consumible'])) { $consumible = $_SESSION['lista_impresoras']['consumible']; }
+  else { $consumible = null; }
 
-  $registros_totales = $paginador -> registrosTotaleslistaImpresoras($connect, $area, $marca, $modelo, $tipo, $modelo_tinta_toner);
+  $registros_totales = $paginador -> registrosTotaleslistaImpresoras($connect, $area, $marca, $modelo, $tipo, $consumible);
 
-  $lista_impresoras = $inventario_impresoras -> listaImpresorasBuscar($connect, $area, $marca, $modelo, $tipo, $modelo_tinta_toner, $pag, $noReg);
+  $lista_impresoras = $inventario_impresoras -> listaImpresorasBuscar($connect, $area, $marca, $modelo, $tipo, $consumible, $pag, $noReg);
 }
 else {
   $registros_totales = $paginador -> registrosTotales($connect, 'impresoras');
@@ -49,34 +51,40 @@ include_once 'menu.php';
     <div class="col-12 centrar-contenedor">
       <div class="contenedor">
         <div class="titulo-contenedor">
-          <h2>Lista de entrega de toner y tinta</h2>
-          <p align="center"> <a href="/agregar_impresora" title="Agregar nueva impresora."> <span class="fas fa-2x fa-plus"></span> </a> </p>
+          <h2>Inventario de impresoras</h2>
+          <p align="center"> <a href="/agregar_impresora" title="Agregar impresora."> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
         <div class="contenido-contenedor">
           <table width="100%" style="font-size: .8rem;">
             <tr>
-              <th>OPERACIONES</th>
+              <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                <th>OPERACIONES</th>
+              <?php endif; ?>
               <th>ID</th>
+              <th>QR</th>
+              <th>RESPONSABLE</th>
               <th>ÁREA</th>
-              <th>CANTIDAD</th>
               <th>MARCA</th>
               <th>MODELO</th>
               <th>TIPO</th>
-              <th>MODELO DE TINTA</th>
+              <th>CONSUMIBLE</th>
             </tr>
 
             <?php if (isset($lista_impresoras)): ?>
               <?php foreach ($lista_impresoras as $impresora): ?>
                 <tr>
-                  <td> <a href="/editar_impresora/<?php echo $impresora['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                    <td> <a href="/editar_impresora/<?php echo $impresora['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <?php endif; ?>
                   <td><?php echo $impresora['id']; ?></td>
+                  <td><?php echo $impresora['qr']; ?></td>
+                  <td><?php echo $impresora['responsable']; ?></td>
                   <td><?php echo $impresora['area']; ?></td>
-                  <td><?php echo $impresora['cantidad']; ?></td>
                   <td><?php echo $impresora['marca']; ?></td>
                   <td><?php echo $impresora['modelo']; ?></td>
                   <td><?php echo $impresora['tipo']; ?></td>
-                  <td><?php echo $impresora['modelo_tinta_toner']; ?></td>
+                  <td><?php echo $impresora['consumible']; ?></td>
                 </tr>
               <?php endforeach; ?>
             <?php else: ?>

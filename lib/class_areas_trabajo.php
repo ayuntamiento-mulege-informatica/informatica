@@ -3,7 +3,7 @@
  *
  */
 class areas_trabajo {
-
+  // Lista de todas las áreas de trabajo.
   function listaAreasTrabajo($connect) {
     $sql = "SELECT area FROM areas_trabajo ORDER BY area ASC";
     $query = mysqli_query($connect, $sql);

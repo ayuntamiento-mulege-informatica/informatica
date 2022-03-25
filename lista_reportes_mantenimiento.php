@@ -51,7 +51,9 @@ include_once 'menu.php';
         <div class="contenido-contenedor" style="overflow: auto;">
           <table width="100%" style="font-size: .8rem;">
             <tr>
-              <th colspan="3">OPERACIONES</th>
+              <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                <th colspan="3">OPERACIONES</th>
+              <?php endif; ?>
               <th>NO. REPORTE</th>
               <th>FECHA DE INGRESO</th>
               <th>FECHA DE SALIDA</th>
@@ -71,9 +73,11 @@ include_once 'menu.php';
             <?php if (isset($lista_reportes)): ?>
               <?php foreach ($lista_reportes as $reporte): ?>
                 <tr>
-                  <td> <a href="/editar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
-                  <td> <a href="/eliminar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Eliminar reporte"> <span class="fas fa-2x fa-eraser"></span> </a> </td>
-                  <td> <a href="/imprimir_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
+                  <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
+                    <td> <a href="/editar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                    <td> <a href="/eliminar_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Eliminar reporte"> <span class="fas fa-2x fa-eraser"></span> </a> </td>
+                    <td> <a href="/imprimir_reporte_mantenimiento/<?php echo $reporte['reporte']; ?>" title="Imprimir reporte" target="_blank"> <span class="fas fa-2x fa-print"></span> </a> </td>
+                  <?php endif; ?>
                   <td><?php echo $reporte['reporte']; ?></td>
                   <td><?php echo $reporte['fecha_ingreso']; ?></td>
                   <td><?php echo $reporte['fecha_salida']; ?></td>
