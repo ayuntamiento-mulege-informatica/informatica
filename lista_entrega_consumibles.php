@@ -1,8 +1,8 @@
 <?php
-require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_entrega_consumibles.php';
 require_once 'lib/class_paginador.php';
 
-$entrega_toner_tinta = new entrega_toner_tinta;
+$entrega_consumibles = new entrega_consumibles;
 $paginador = new pages;
 
 if (isset($parametro_2)) { $pag = $parametro_2; }
@@ -29,13 +29,13 @@ if (isset($_POST['accion']) || isset($_SESSION['lista_toner_tinta'])) {
   elseif (isset($_SESSION['lista_toner_tinta']['especificaciones'])) { $especificaciones = $_SESSION['lista_toner_tinta']['especificaciones']; }
   else { $especificaciones = null; }
 
-  $registros_totales = $paginador -> registrosTotaleslistaEntregaTonerTinta($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones);
+  $registros_totales = $paginador -> registrosTotaleslistaEntregaConsumibles($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones);
 
-  $lista_entrega = $entrega_toner_tinta -> listaTonerTintaBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg);
+  $lista_entrega = $entrega_consumibles -> listaConsumiblesBuscar($connect, $fecha_cambio, $area, $impresora, $tipo, $especificaciones, $pag, $noReg);
 }
 else {
-  $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_tinta_toner');
-  $lista_entrega = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
+  $registros_totales = $paginador -> registrosTotales($connect, 'bitacora_entrega_consumibles');
+  $lista_entrega = $entrega_consumibles -> listaConsumibles($connect, $pag, $noReg);
 }
 
 $nPag = $paginador -> nPag($registros_totales, $noReg);
@@ -50,7 +50,7 @@ include_once 'menu.php';
       <div class="contenedor">
         <div class="titulo-contenedor">
           <h2>Lista de entrega de toner y tinta</h2>
-          <p align="center"> <a href="/nuevo_registro_toner_tinta" title="Crear nuevo registro de toner y tinta"> <span class="fas fa-2x fa-plus"></span> </a> </p>
+          <p align="center"> <a href="/nuevo_registro_consumibles" title="Crear nuevo registro de consumibles"> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
         <div class="contenido-contenedor">
@@ -71,7 +71,7 @@ include_once 'menu.php';
             <?php if (isset($lista_entrega)): ?>
               <?php foreach ($lista_entrega as $entrega): ?>
                 <tr>
-                  <td> <a href="/editar_toner_tinta/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
+                  <td> <a href="/editar_consumibles/<?php echo $entrega['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
                   <td><?php echo $entrega['id']; ?></td>
                   <td><?php echo $entrega['fecha_cambio']; ?></td>
                   <td><?php echo $entrega['area']; ?></td>

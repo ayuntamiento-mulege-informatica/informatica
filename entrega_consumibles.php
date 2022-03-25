@@ -1,14 +1,14 @@
 <?php
-require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_entrega_consumibles.php';
 require_once 'lib/class_areas_trabajo.php';
 
-$entrega_toner_tinta = new entrega_toner_tinta;
+$entrega_consumibles = new entrega_consumibles;
 $areas_trabajo = new areas_trabajo;
 
-$lista_toner_tinta = $entrega_toner_tinta -> listaTonerTinta($connect, $pag, $noReg);
-$lista_impresoras = $entrega_toner_tinta -> listaImpresoras($connect);
-$lista_tipo_impresora = $entrega_toner_tinta -> listaTipoImpresora($connect);
-$lista_especificaciones = $entrega_toner_tinta -> listaEspecificaciones($connect);
+$lista_toner_tinta = $entrega_consumibles -> listaConsumibles($connect, $pag, $noReg);
+$lista_impresoras = $entrega_consumibles -> listaImpresoras($connect);
+$lista_tipo_impresora = $entrega_consumibles -> listaTipoImpresora($connect);
+$lista_especificaciones = $entrega_consumibles -> listaEspecificaciones($connect);
 $lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
 if (isset($_SESSION['lista_toner_tinta'])) { unset($_SESSION['lista_toner_tinta']); }
@@ -30,13 +30,13 @@ include_once 'menu.php';
               <div class="col-6">
                 <h3>Registros</h3>
                 <a class="enlace-boton" href="/nuevo_registro_toner_tinta">Nuevo registro</a>
-                <a class="enlace-boton" href="/lista_entrega_toner_tinta">Lista entrega de toner y tinta</a>
+                <a class="enlace-boton" href="/lista_entrega_consumibles">Lista de entrega de consumibles</a>
               </div>
 
               <div class="col-6">
                 <h3>Buscar registros</h3>
 
-                <form class="container-fluid" action="/lista_entrega_toner_tinta" method="post">
+                <form class="container-fluid" action="/lista_entrega_consumibles" method="post">
                   <div class="row justify-content-center">
                     <div class="col-6">
                       <label for="">Fecha de cambio:</label><br>

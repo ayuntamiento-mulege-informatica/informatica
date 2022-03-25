@@ -1,11 +1,11 @@
 <?php
-require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_entrega_consumibles.php';
 require_once 'lib/class_lista_usuarios.php';
 
-$entrega_toner_tinta = new entrega_toner_tinta;
+$entrega_consumibles = new entrega_consumibles;
 $usuarios = new lista_usuarios;
 
-$info_reporte = $entrega_toner_tinta -> infoReporte($connect, $parametro_2);
+$info_reporte = $entrega_consumibles -> infoReporte($connect, $parametro_2);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
 if (isset($_SESSION['lista_toner_tinta'])) { unset($_SESSION['lista_toner_tinta']); }
@@ -21,11 +21,11 @@ include_once 'menu.php';
         <div class="titulo-contenedor">
           <h2>Nuevo reporte de mantenimiento</h2>
 
-          <p align="center"> <a href="/nuevo_registro_toner_tinta" title="Crear nuevo registro de toner y tinta"> <span class="fas fa-2x fa-plus"></span> </a> </p>
+          <p align="center"> <a href="/nuevo_registro_consumibles" title="Crear nuevo registro de consumibles"> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
         <div class="contenido-contenedor">
-          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_actualizacion_entrega_toner_tinta.php" method="post">
+          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_actualizacion_entrega_consumibles.php" method="post">
             <div class="row justify-content-center">
               <div class="col-1">
                 <label for="id">ID:</label><br>
@@ -102,7 +102,7 @@ include_once 'menu.php';
 if (isset($_SESSION['msg'])) {
   echo '<script>
   alert("'.$_SESSION['msg'].'");
-  location.href="/editar_toner_tinta/'.$parametro_2.'";
+  location.href="/editar_consumibles/'.$parametro_2.'";
   </script>';
 
   unset($_SESSION['msg']);

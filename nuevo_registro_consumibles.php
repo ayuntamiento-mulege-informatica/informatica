@@ -1,14 +1,14 @@
 <?php
-require_once 'lib/class_entrega_toner_tinta.php';
+require_once 'lib/class_entrega_consumibles.php';
 require_once 'lib/class_lista_usuarios.php';
 
-$entrega_toner_tinta = new entrega_toner_tinta;
+$entrega_consumibles = new entrega_consumibles;
 $usuarios = new lista_usuarios;
 
-$registro_reciente = $entrega_toner_tinta -> registroRecienteTonerTinta($connect);
+$registro_reciente = $entrega_consumibles -> registroRecienteConsumibles($connect);
 $lista_usuarios = $usuarios -> listaDeUsuarios($connect);
 
-if (isset($_SESSION['lista_toner_tinta'])) { unset($_SESSION['lista_toner_tinta']); }
+if (isset($_SESSION['lista_consumibles'])) { unset($_SESSION['lista_consumibles']); }
 
 include_once 'header.php';
 include_once 'menu.php';
@@ -22,7 +22,7 @@ include_once 'menu.php';
           <h2>Nuevo registro de entrega de toner o tinta</h2>
         </div>
         <div class="contenido-contenedor">
-          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_entrega_toner_tinta.php" method="post">
+          <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_entrega_consumibles.php" method="post">
             <div class="row justify-content-center">
               <div class="col-1">
                 <label for="id">ID:</label><br>
