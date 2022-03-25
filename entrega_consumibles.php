@@ -29,7 +29,7 @@ include_once 'menu.php';
             <div class="row">
               <div class="col-6">
                 <h3>Registros</h3>
-                <a class="enlace-boton" href="/nuevo_registro_toner_tinta">Nuevo registro</a>
+                <a class="enlace-boton" href="/nuevo_registro_consumibles">Nuevo registro</a>
                 <a class="enlace-boton" href="/lista_entrega_consumibles">Lista de entrega de consumibles</a>
               </div>
 
