@@ -87,7 +87,7 @@ switch ($area) {
         include_once 'imprimir_reporte_mantenimiento.php';
         break;
 
-      // BITÁCORA DE ENTREGA DE TONER Y TINTA.
+      // BITÁCORA DE ENTREGA DE CONSUMIBLES.
       case '/entrega_consumibles':
       case '/entrega_consumibles/'.$parametro_2:
         include_once 'entrega_consumibles.php';
@@ -104,6 +104,10 @@ switch ($area) {
       case '/lista_entrega_consumibles':
       case '/lista_entrega_consumibles/'.$parametro_2:
         include_once 'lista_entrega_consumibles.php';
+        break;
+
+      case '/imprimir_consumibles/'.$parametro_2:
+        include_once 'imprimir_consumibles.php';
         break;
 
       // INVENTARIO DE IMPRESORAS
