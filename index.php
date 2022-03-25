@@ -88,22 +88,22 @@ switch ($area) {
         break;
 
       // BITÁCORA DE ENTREGA DE TONER Y TINTA.
-      case '/entrega_toner_tinta':
-      case '/entrega_toner_tinta/'.$parametro_2:
-        include_once 'entrega_toner_tinta.php';
+      case '/entrega_consumibles':
+      case '/entrega_consumibles/'.$parametro_2:
+        include_once 'entrega_consumibles.php';
         break;
 
-      case '/nuevo_registro_toner_tinta':
-        include_once 'nuevo_registro_toner_tinta.php';
+      case '/nuevo_registro_consumibles':
+        include_once 'nuevo_registro_consumibles.php';
         break;
 
-      case '/editar_toner_tinta/'.$parametro_2:
-        include_once 'editar_toner_tinta.php';
+      case '/editar_consumibles/'.$parametro_2:
+        include_once 'editar_consumibles.php';
         break;
 
-      case '/lista_entrega_toner_tinta':
-      case '/lista_entrega_toner_tinta/'.$parametro_2:
-        include_once 'lista_entrega_toner_tinta.php';
+      case '/lista_entrega_consumibles':
+      case '/lista_entrega_consumibles/'.$parametro_2:
+        include_once 'lista_entrega_consumibles.php';
         break;
 
       // INVENTARIO DE IMPRESORAS

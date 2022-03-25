@@ -18,7 +18,7 @@ include_once 'menu.php';
                 <h3>Operaciones</h3>
                 <div class="centrar-botones">
                   <a class="enlace-boton" href="/bitacora_mantenimiento"> <span class="fas fa-tools"></span> Bitácora de matenimiento</a>
-                  <a class="enlace-boton" href="/entrega_toner_tinta"> <span class="fas fa-print"></span> Entrega de toner y tinta</a>
+                  <a class="enlace-boton" href="/entrega_consumibles"> <span class="fas fa-print"></span> Entrega de consumibles</a>
                 </div>
               </div>
 
