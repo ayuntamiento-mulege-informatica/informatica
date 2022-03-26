@@ -28,7 +28,7 @@ include_once 'menu.php';
                 <h3>Inventarios</h3>
                 <div class="centrar-botones">
                   <a class="enlace-boton" href="/inventario_impresoras">Inventario de impresoras</a>
-                  <a class="enlace-boton" href="/inventario_toner_tinta">Inventario de consumibles</a>
+                  <a class="enlace-boton" href="/inventario_consumibles">Inventario de consumibles</a>
                   <a class="enlace-boton" href="/inventario_computadoras">Inventario de computadoras</a>
                 </div>
               </div>

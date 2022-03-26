@@ -128,6 +128,15 @@ switch ($area) {
         include_once 'lista_impresoras.php';
         break;
 
+      // INVENTARIO DE CONSUMIBLES
+      case '/inventario_consumibles':
+        include_once 'inventario_consumibles.php';
+        break;
+
+      case '/agregar_consumible':
+        include_once 'agregar_consumible.php';
+        break;
+
       // GESTIÓN DE TICKETS
 
       case '/revisar_tickets':
