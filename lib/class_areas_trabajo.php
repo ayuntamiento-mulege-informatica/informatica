@@ -14,6 +14,18 @@ class areas_trabajo {
     if (isset($area)) { return $area; }
     else { return null; }
   }
+
+  // Consulta un área de trabajo específica.
+  function areaTrabajoEspecifica($connect, $id) {
+    $sql = "SELECT * FROM areas_trabajo WHERE id = $id";
+    $query = mysqli_query($connect, $sql);
+    $row = mysqli_fetch_array($query);
+
+    return array(
+      'id' => $row['id'],
+      'area' => $row['area']
+    );
+  }
 }
 
 ?>

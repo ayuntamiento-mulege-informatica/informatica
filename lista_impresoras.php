@@ -1,10 +1,12 @@
 <?php
 require_once 'lib/class_inventario_impresoras.php';
 require_once 'lib/class_areas_trabajo.php';
+require_once 'lib/class_responsables.php';
 require_once 'lib/class_paginador.php';
 
 $inventario_impresoras = new inventario_impresoras;
 $areas_trabajo = new areas_trabajo;
+$responsables = new responsables;
 $paginador = new pages;
 
 if (isset($parametro_2)) { $pag = $parametro_2; }
@@ -51,7 +53,7 @@ include_once 'menu.php';
     <div class="col-12 centrar-contenedor">
       <div class="contenedor">
         <div class="titulo-contenedor">
-          <h2>Inventario de impresoras</h2>
+          <h2>Lista de impresoras</h2>
           <p align="center"> <a href="/agregar_impresora" title="Agregar impresora."> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
@@ -73,14 +75,19 @@ include_once 'menu.php';
 
             <?php if (isset($lista_impresoras)): ?>
               <?php foreach ($lista_impresoras as $impresora): ?>
+                <?php
+                $area_trabajo_impresora = $areas_trabajo -> areaTrabajoEspecifica($connect, $impresora['area']);
+                $responsable_individual = $responsables -> responsableIndividual($connect, $impresora['responsable']);
+                ?>
+
                 <tr>
                   <?php if ($_SESSION['usuario'] != 'Informática 5'): ?>
                     <td> <a href="/editar_impresora/<?php echo $impresora['id']; ?>" title="Modificar reporte"> <span class="fas fa-2x fa-pencil-alt"></span> </a> </td>
                   <?php endif; ?>
                   <td><?php echo $impresora['id']; ?></td>
-                  <td><?php echo $impresora['qr']; ?></td>
-                  <td><?php echo $impresora['responsable']; ?></td>
-                  <td><?php echo $impresora['area']; ?></td>
+                  <td> <img src="/evidencia/inventarios/impresoras/<?php echo $impresora['qr']; ?>" alt="" width="100" height="100"></td>
+                  <td><?php echo $responsable_individual['nombre']; ?></td>
+                  <td><?php echo $area_trabajo_impresora['area']; ?></td>
                   <td><?php echo $impresora['marca']; ?></td>
                   <td><?php echo $impresora['modelo']; ?></td>
                   <td><?php echo $impresora['tipo']; ?></td>
