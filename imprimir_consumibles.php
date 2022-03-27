@@ -15,7 +15,7 @@ else {
   <html lang="es-MX">
   <head>
     <meta charset="utf-8">
-    <title>IMPRESIÓN DEL REPORTE DE MANTENIMIENTO No. <?php echo $info_reporte['id']; ?></title>
+    <title>ENTREGA DE CONSUMIBLE No. <?php echo $info_reporte['id']; ?></title>
     <link rel="stylesheet" media="screen" href="/css/screen_consumibles.css">
     <link rel="stylesheet" media="print" href="/css/print_consumibles.css">
   </head>

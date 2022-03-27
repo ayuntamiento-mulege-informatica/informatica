@@ -7,6 +7,7 @@
           if ($seccion != '/'){ echo '<li><a class="enlace-boton" href="/"><span class="fas fa-home"></span> Inicio</a></li>'; }
 
           switch ($seccion) {
+            // REPORTES DE MANTENIMIENTO
             case '/nuevo_reporte_mantenimiento':
             case '/lista_reportes_mantenimiento':
             case '/lista_reportes_mantenimiento/'.$parametro_2:
@@ -18,15 +19,16 @@
               echo '<li><a class="enlace-boton" href="/lista_reportes_mantenimiento">Lista de reportes</a></li>';
               break;
 
-            case '/lista_entrega_toner_tinta':
-            case '/lista_entrega_toner_tinta/'.$parametro_2:
-              echo '<li><a class="enlace-boton" href="/entrega_toner_tinta">Bitácora de entrega de toner y tinta</a></li>';
+            // ENTREGA DE CONSUMIBLES
+            case '/lista_entrega_consumibles':
+            case '/lista_entrega_consumibles/'.$parametro_2:
+              echo '<li><a class="enlace-boton" href="/entrega_consumibles">Bitácora de entrega de consumibles</a></li>';
               break;
 
-            case '/nuevo_registro_toner_tinta':
-            case '/editar_toner_tinta/'.$parametro_2:
-              echo '<li><a class="enlace-boton" href="/entrega_toner_tinta">Bitácora de entrega de toner y tinta</a></li>';
-              echo '<li><a class="enlace-boton" href="/lista_entrega_toner_tinta">Lista de entrega de toner y tinta</a></li>';
+            case '/nuevo_registro_consumibles':
+            case '/editar_consumibles/'.$parametro_2:
+              echo '<li><a class="enlace-boton" href="/entrega_consumibles">Bitácora de entrega de consumibles</a></li>';
+              echo '<li><a class="enlace-boton" href="/lista_entrega_consumibles">Lista de entrega de consumibles</a></li>';
               break;
 
             case '/lista_impresoras':

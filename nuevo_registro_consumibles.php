@@ -19,7 +19,7 @@ include_once 'menu.php';
     <div class="col-12">
       <div class="contenedor">
         <div class="titulo-contenedor">
-          <h2>Nuevo registro de entrega de toner o tinta</h2>
+          <h2>Nuevo registro de entrega de consumibles</h2>
         </div>
         <div class="contenido-contenedor">
           <form enctype="multipart/form-data" class="container-fluid" action="/lib/procesar_entrega_consumibles.php" method="post">

@@ -100,7 +100,7 @@ else {
             <div style="width: 100%; height: 2.5cm; float: left;"> </div>
 
             <!-- FIRMA DEL RESPONSABLE -->
-              <div style="width: 100%; height: .6cm; float: left; text-align: center;"><?php echo $info_reporte['responsable']; ?></div>
+              <div style="width: 100%; height: .6cm; float: left; text-align: center;">Ing. Jose Pablo Romero Verdugo</div>
             <div style="width: 100%; height: .6cm; float: left;"> </div>
           </div>
         </div>

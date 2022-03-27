@@ -49,7 +49,7 @@ include_once 'menu.php';
     <div class="col-12 centrar-contenedor">
       <div class="contenedor">
         <div class="titulo-contenedor">
-          <h2>Lista de entrega de toner y tinta</h2>
+          <h2>Lista de entrega de consumibles</h2>
           <p align="center"> <a href="/nuevo_registro_consumibles" title="Crear nuevo registro de consumibles"> <span class="fas fa-2x fa-plus"></span> </a> </p>
         </div>
 
