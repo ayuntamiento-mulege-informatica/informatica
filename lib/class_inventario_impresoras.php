@@ -26,7 +26,13 @@ class inventario_impresoras {
 
   // Función para listar impresoras buscadas.
   function listaImpresorasBuscar($connect, $area, $marca, $modelo, $tipo, $consumible, $pag, $noReg) {
-    $sql = "SELECT * FROM impresoras WHERE area LIKE '%$area%' AND marca LIKE '%$marca%' AND modelo LIKE '%$modelo%' AND tipo LIKE '%$tipo%'  AND consumible LIKE '%$consumible%' ORDER BY area ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    if ($area == '') {
+      $sql = "SELECT * FROM impresoras WHERE marca LIKE '%$marca%' AND modelo LIKE '%$modelo%' AND tipo LIKE '%$tipo%'  AND consumible LIKE '%$consumible%' ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+    else {
+      $sql = "SELECT * FROM impresoras WHERE area = $area ORDER BY id ASC LIMIT ".($pag-1)*$noReg.",$noReg";
+    }
+
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
       $impresoras[] = array(
@@ -55,8 +61,8 @@ class inventario_impresoras {
   }
 
   // Función para registrar nueva impresora.
-  function registrarImpresora($connect, $id, $area, $cantidad, $marca, $modelo, $tipo, $consumible) {
-    $sql = "INSERT INTO impresoras (id, area, cantidad, marca, modelo, tipo, consumible) VALUES ($id, '$area', $cantidad, '$marca', '$modelo', '$tipo', '$consumible')";
+  function registrarImpresora($connect, $id, $area, $marca, $modelo, $tipo, $consumible) {
+    $sql = "INSERT INTO impresoras (id, area, marca, modelo, tipo, consumible) VALUES ($id, $area, '$marca', '$modelo', '$tipo', '$consumible')";
 
     mysqli_query($connect, $sql) or die ($connect -> error.' No se pudo realizar el registro de la impresora.');
 
@@ -80,7 +86,6 @@ class inventario_impresoras {
     $impresora = array(
       'id' => $row['id'],
       'area' => $row['area'],
-      'cantidad' => $row['cantidad'],
       'marca' => $row['marca'],
       'modelo' => $row['modelo'],
       'tipo' => $row['tipo'],
@@ -128,7 +133,7 @@ class inventario_impresoras {
   }
 
   // Función para listar tinta o toner de impresoras.
-  function listaImpresorasTinta($connect) {
+  function listaImpresorasConsumible($connect) {
     $sql = "SELECT consumible FROM impresoras GROUP BY consumible";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {

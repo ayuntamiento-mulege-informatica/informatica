@@ -35,11 +35,6 @@ include_once 'menu.php';
               </div>
 
               <div class="col-4">
-                <label for="cantidad">Cantidad:</label><br>
-                <input id="cantidad" type="number" min="0" name="cantidad" value="<?php echo $info_impresora['cantidad']; ?>" required>
-              </div>
-
-              <div class="col-4">
                 <label for="marca">Marca:</label><br>
                 <input id="marca" type="text" name="marca" value="<?php echo $info_impresora['marca']; ?>" required>
               </div>
@@ -55,8 +50,8 @@ include_once 'menu.php';
               </div>
 
               <div class="col-4">
-                <label for="modelo_tinta_toner">Modelo de tinta o toner:</label><br>
-                <input id="modelo_tinta_toner" type="text" name="modelo_tinta_toner" value="<?php echo $info_impresora['modelo_tinta_toner']; ?>" required>
+                <label for="consumible">Consumible:</label><br>
+                <input id="consumible" type="text" name="consumible" value="<?php echo $info_impresora['consumible']; ?>" required>
               </div>
             </div>
 

@@ -5,10 +5,13 @@
 class areas_trabajo {
   // Lista de todas las áreas de trabajo.
   function listaAreasTrabajo($connect) {
-    $sql = "SELECT area FROM areas_trabajo ORDER BY area ASC";
+    $sql = "SELECT * FROM areas_trabajo ORDER BY area ASC";
     $query = mysqli_query($connect, $sql);
     while ($row = mysqli_fetch_array($query)) {
-      $area[] = array( 'area' => $row['area'] );
+      $area[] = array(
+        'id' => $row['id'],
+        'area' => $row['area']
+      );
     }
 
     if (isset($area)) { return $area; }

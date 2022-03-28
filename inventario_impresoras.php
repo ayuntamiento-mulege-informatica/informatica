@@ -8,7 +8,7 @@ $areas_trabajo = new areas_trabajo;
 $lista_impresoras_marcas = $inventario_impresoras -> listaImpresorasMarcas($connect);
 $lista_impresoras_tipo = $inventario_impresoras -> listaImpresorasTipo($connect);
 $lista_impresoras_modelo = $inventario_impresoras -> listaImpresorasModelo($connect);
-$lista_impresoras_tinta = $inventario_impresoras -> listaImpresorasTinta($connect);
+$lista_impresoras_tinta = $inventario_impresoras -> listaImpresorasConsumible($connect);
 $lista_areas_trabajo = $areas_trabajo -> listaAreasTrabajo($connect);
 
 if (isset($_SESSION['lista_impresoras'])) { unset($_SESSION['lista_impresoras']); }
@@ -40,27 +40,60 @@ include_once 'menu.php';
                   <div class="row justify-content-center">
                     <div class="col-6">
                       <label for="">Área:</label><br>
-                      <input list="lista_areas" type="text" name="area">
+                      <select name="area">
+                        <option value=""></option>
+                        <?php
+                        if (isset($lista_areas_trabajo)){
+                          foreach ($lista_areas_trabajo as $area_trabajo){ echo '<option value="'.$area_trabajo['id'].'">'.$area_trabajo['area'].'</option>'; }
+                        }
+                        ?>
+                      </select>
                     </div>
 
                     <div class="col-6">
                       <label for="">Marca:</label><br>
-                      <input list="impresoras_marcas" type="text" name="marca">
+                      <select name="marca">
+                        <option value=""></option>
+                        <?php
+                        if (isset($lista_impresoras_marcas)) {
+                          foreach ($lista_impresoras_marcas as $marca) { echo '<option value="'.$marca['marca'].'">'.$marca['marca'].'</option>'; }
+                        }
+                        ?>
+                      </select>
                     </div>
 
                     <div class="col-6">
                       <label for="">Modelo:</label><br>
-                      <input list="lista_modelo" type="text" name="modelo">
+                      <select name="modelo">
+                        <option value=""></option>
+                        <?php
+                        if (isset($lista_impresoras_modelo)) {
+                          foreach ($lista_impresoras_modelo as $modelo){ echo '<option value="'.$modelo['modelo'].'">'.$modelo['modelo'].'</option>'; }
+                        }
+                        ?>
+                      </select>
                     </div>
 
                     <div class="col-6">
                       <label for="">Tipo:</label><br>
-                      <input list="tipo_impresora" type="text" name="tipo">
+                      <select name="tipo">
+                        <option value=""></option>
+                        <option value="Tanque">Tanque</option>
+                        <option value="Toner">Toner</option>
+                        <option value="Cartucho">Cartucho</option>
+                      </select>
                     </div>
 
                     <div class="col-12">
-                      <label for="">Modelo de tinta o toner:</label><br>
-                      <input list="lista_modelo_tinta" type="text" name="modelo_tinta_toner">
+                      <label for="">Consumible:</label><br>
+                      <select name="consumible">
+                        <option value=""></option>
+                        <?php
+                        if (isset($lista_impresoras_tinta)) {
+                          foreach ($lista_impresoras_tinta as $tinta){ echo '<option value="'.$tinta['consumible'].'">'.$tinta['consumible'].'</option>'; }
+                        }
+                        ?>
+                      </select>
                     </div>
                   </div>
 
@@ -86,36 +119,6 @@ if (isset($_SESSION['msg'])) {
   location.href="/inventario_impresoras";
   </script>';
   unset($_SESSION['msg']);
-}
-
-if (isset($lista_areas_trabajo)){
-  echo '<datalist id="lista_areas">';
-  foreach ($lista_areas_trabajo as $area_trabajo){ echo '<option value="'.$area_trabajo['area'].'">'.$area_trabajo['area'].'</option>'; }
-  echo '</datalist>';
-}
-
-if (isset($lista_impresoras_marcas)) {
-  echo '<datalist id="impresoras_marcas">';
-  foreach ($lista_impresoras_marcas as $marca) { echo '<option value="'.$marca['marca'].'">'.$marca['marca'].'</option>'; }
-  echo '</datalist>';
-}
-
-if (isset($lista_impresoras_tipo)) {
-  echo '<datalist id="tipo_impresora">';
-  foreach ($lista_impresoras_tipo as $tipo) { echo '<option value="'.$tipo['tipo'].'">'.$tipo['tipo'].'</option>'; }
-  echo '</datalist>';
-}
-
-if (isset($lista_impresoras_modelo)) {
-  echo '<datalist id="lista_modelo">';
-  foreach ($lista_impresoras_modelo as $modelo){ echo '<option value="'.$modelo['modelo'].'">'.$modelo['modelo'].'</option>'; }
-  echo '</datalist>';
-}
-
-if (isset($lista_impresoras_tinta)) {
-  echo '<datalist id="lista_modelo_tinta">';
-  foreach ($lista_impresoras_tinta as $tinta){ echo '<option value="'.$tinta['modelo_tinta_toner'].'">'.$tinta['modelo_tinta_toner'].'</option>'; }
-  echo '</datalist>';
 }
 
 include_once 'footer.php';
